@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { TiltedCard } from '@/components/TiltedCard'
 
 function FoundationsIllustration() {
   return (
@@ -83,35 +84,39 @@ export function HomePage() {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Link
-          to="/foundations"
-          className="group bg-neutral-100 rounded-2xl overflow-hidden hover:bg-neutral-200/70 transition-colors"
-        >
-          <div className="h-56 relative">
-            <FoundationsIllustration />
-          </div>
-          <div className="px-6 pb-6">
-            <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Foundations</h2>
-            <p className="text-body-sm text-neutral-500">
-              Colour tokens, typography scale, spacing, corner radius, and elevation — the visual language every component is built on.
-            </p>
-          </div>
-        </Link>
+        <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
+          <Link
+            to="/foundations"
+            className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors block"
+          >
+            <div className="h-56 relative overflow-hidden rounded-t-2xl">
+              <FoundationsIllustration />
+            </div>
+            <div className="px-6 pb-6">
+              <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Foundations</h2>
+              <p className="text-body-sm text-neutral-500">
+                Colour tokens, typography scale, spacing, corner radius, and elevation — the visual language every component is built on.
+              </p>
+            </div>
+          </Link>
+        </TiltedCard>
 
-        <Link
-          to="/components"
-          className="group bg-neutral-100 rounded-2xl overflow-hidden hover:bg-neutral-200/70 transition-colors"
-        >
-          <div className="h-56 relative">
-            <ComponentsIllustration />
-          </div>
-          <div className="px-6 pb-6">
-            <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Components</h2>
-            <p className="text-body-sm text-neutral-500">
-              10 production-ready React components built from Figma designs, token-audited, and accessible out of the box.
-            </p>
-          </div>
-        </Link>
+        <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
+          <Link
+            to="/components"
+            className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors block"
+          >
+            <div className="h-56 relative overflow-hidden rounded-t-2xl">
+              <ComponentsIllustration />
+            </div>
+            <div className="px-6 pb-6">
+              <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Components</h2>
+              <p className="text-body-sm text-neutral-500">
+                10 production-ready React components built from Figma designs, token-audited, and accessible out of the box.
+              </p>
+            </div>
+          </Link>
+        </TiltedCard>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
+import { TiltedCard } from '@/components/TiltedCard'
 
 function ColoursIllustration() {
   return (
@@ -107,21 +108,22 @@ export function FoundationsPage() {
 
       <div className="grid grid-cols-3 gap-4">
         {foundationList.map(f => (
-          <Link
-            key={f.name}
-            to={f.path}
-            className="group bg-neutral-100 rounded-2xl overflow-hidden hover:bg-neutral-200/70 transition-colors"
-          >
-            <div className="h-44 flex items-center justify-center p-6">
-              {f.illustration}
-            </div>
-            <div className="px-5 pb-5">
-              <h2 className="text-h4 font-semibold text-neutral-900 mb-1">
-                {f.name}
-              </h2>
-              <p className="text-body-sm text-neutral-500">{f.description}</p>
-            </div>
-          </Link>
+          <TiltedCard key={f.name} rotateAmplitude={8} scaleOnHover={1.03}>
+            <Link
+              to={f.path}
+              className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors block"
+            >
+              <div className="h-44 flex items-center justify-center p-6 overflow-hidden rounded-t-2xl">
+                {f.illustration}
+              </div>
+              <div className="px-5 pb-5">
+                <h2 className="text-h4 font-semibold text-neutral-900 mb-1">
+                  {f.name}
+                </h2>
+                <p className="text-body-sm text-neutral-500">{f.description}</p>
+              </div>
+            </Link>
+          </TiltedCard>
         ))}
       </div>
     </div>
