@@ -4,7 +4,6 @@ import { Avatar, type AvatarStatus, type AvatarSize } from '@/components/Avatar'
 type AvatarType = 'icon' | 'initials' | 'image'
 
 const SIZES: AvatarSize[] = ['xs', 'sm', 'md', 'lg']
-const STATUSES: (AvatarStatus | undefined)[] = ['online', 'away', 'offline', 'busy', undefined]
 const TYPES: AvatarType[] = ['icon', 'initials', 'image']
 
 // Public domain placeholder image
