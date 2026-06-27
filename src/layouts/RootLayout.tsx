@@ -54,15 +54,15 @@ export function RootLayout() {
           <span className="text-body font-semibold text-neutral-900">Nucleus DS</span>
         </NavLink>
 
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center p-1 rounded-full bg-neutral-100">
           <NavLink
             to="/foundations"
             className={({ isActive }) =>
               cn(
-                'px-3 py-1.5 rounded-md text-body-sm font-medium transition-colors',
+                'px-4 py-1.5 rounded-full text-body-sm font-medium transition-all',
                 isActive || inFoundations
-                  ? 'text-neutral-900 bg-neutral-100'
-                  : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100',
+                  ? 'bg-white text-neutral-900 shadow-sm'
+                  : 'text-neutral-500 hover:text-neutral-700',
               )
             }
           >
@@ -72,10 +72,10 @@ export function RootLayout() {
             to="/components"
             className={({ isActive }) =>
               cn(
-                'px-3 py-1.5 rounded-md text-body-sm font-medium transition-colors',
+                'px-4 py-1.5 rounded-full text-body-sm font-medium transition-all',
                 isActive || inComponents
-                  ? 'text-neutral-900 bg-neutral-100'
-                  : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100',
+                  ? 'bg-white text-neutral-900 shadow-sm'
+                  : 'text-neutral-500 hover:text-neutral-700',
               )
             }
           >
