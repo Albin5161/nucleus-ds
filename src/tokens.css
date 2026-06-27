@@ -1,0 +1,265 @@
+/*
+ * Nucleus DS — Design Tokens
+ * Auto-derived from design-tokens.zip (Base + Semantics + Components + text.styles)
+ *
+ * 3-tier hierarchy:
+ *   --base-*      Raw primitives  (colour scales, do not use directly in components)
+ *   --semantic-*  Purpose aliases (brand, feedback, surface, text, component states)
+ *   --*           shadcn-compat   (bg-primary, text-foreground, ring-ring, etc.)
+ */
+
+:root {
+  /* ─────────────────────────────────────────────────────
+     TIER 1 — BASE primitives
+     HSL channel values: H S% L%  (no hsl() wrapper — consumed by hsl(var(--x)))
+  ───────────────────────────────────────────────────── */
+
+  /* Indigo — primary brand scale */
+  --base-indigo-50:  244 76% 92%;   /* #dddbfa */
+  --base-indigo-100: 244 74% 88%;   /* #ccc9f7 */
+  --base-indigo-200: 244 75% 83%;   /* #b7b3f4 */
+  --base-indigo-300: 243 75% 77%;   /* #9d98f0 */
+  --base-indigo-400: 243 65% 67%;   /* #7a74e2 */
+  --base-indigo-500: 243 55% 55%;   /* #544dcb */
+  --base-indigo-600: 243 50% 49%;   /* #453ebb */
+  --base-indigo-700: 243 55% 39%;   /* #332d9a */
+  --base-indigo-800: 243 60% 31%;   /* #25207e */
+  --base-indigo-900: 244 65% 21%;   /* #171358 */
+
+  /* Blue — secondary brand scale */
+  --base-blue-50:  194 100% 95%;   /* #e5f9ff */
+  --base-blue-100: 194 100% 91%;   /* #d1f4ff */
+  --base-blue-200: 195 100% 86%;   /* #b8edff */
+  --base-blue-300: 195 100% 80%;   /* #99e5ff */
+  --base-blue-400: 195 100% 70%;   /* #66d9ff */
+  --base-blue-500: 195 100% 58%;   /* #29c9ff */
+  --base-blue-600: 195 100% 52%;   /* #0ac2ff */
+  --base-blue-700: 195 100% 45%;   /* #00ace5 */
+  --base-blue-800: 195 100% 34%;   /* #0082ad */
+  --base-blue-900: 195 100% 24%;   /* #005c7a */
+
+  /* Neutrals */
+  --base-neutral-50:  220 15% 96%;  /* #f3f4f6 */
+  --base-neutral-100: 230 15% 92%;  /* #e8e9ee */
+  --base-neutral-200: 224 16% 86%;  /* #d6d9e1 */
+  --base-neutral-300: 219 15% 78%;  /* #bec4cf */
+  --base-neutral-400: 221 15% 68%;  /* #a1a9ba */
+  --base-neutral-500: 223 15% 58%;  /* #848da4 */
+  --base-neutral-600: 221 15% 42%;  /* #5b657b */
+  --base-neutral-700: 222 15% 30%;  /* #414858 */
+  --base-neutral-800: 223 15% 18%;  /* #272b35 */
+  --base-neutral-900: 222 16% 13%;  /* #1b1e25 */
+
+  /* Surface — light */
+  --base-surface-light-0:         0   0% 100%;  /* #ffffff */
+  --base-surface-light-2:       210  20%  98%;  /* #f9fafb */
+  --base-surface-light-3:       220  15%  96%;  /* #f3f4f6 */
+  --base-surface-light-overlay:   0   0%  54%;  /* #898989 */
+
+  /* Surface — dark */
+  --base-surface-dark-0:          0   0%   7%;  /* #121212 */
+  --base-surface-dark-2:          0   0%  10%;  /* #1a1a1a */
+  --base-surface-dark-3:          0   0%  16%;  /* #2a2a2a */
+  --base-surface-dark-overlay:    0   0%  36%;  /* #5c5c5c */
+
+  /* Feedback */
+  --base-success-base:   142  71%  45%;  /* #22c55e */
+  --base-success-light:  141  84%  93%;  /* #dcfce7 */
+  --base-success-dark:   143  64%  24%;  /* #166534 */
+
+  --base-warning-base:    38  92%  50%;  /* #f59e0b */
+  --base-warning-light:   48  97%  89%;  /* #fef3c7 */
+  --base-warning-dark:    23  83%  31%;  /* #92400e */
+
+  --base-danger-base:      0  84%  60%;  /* #ef4444 */
+  --base-danger-light:     0  93%  94%;  /* #fee2e2 */
+  --base-danger-dark:      0  63%  31%;  /* #7f1d1d */
+
+  /* ─────────────────────────────────────────────────────
+     TIER 2 — SEMANTIC aliases  (light mode defaults)
+  ───────────────────────────────────────────────────── */
+
+  /* Brand */
+  --semantic-brand-primary:               var(--base-indigo-500);
+  --semantic-brand-primary-subtle:        var(--base-indigo-50);
+  --semantic-brand-primary-strong:        var(--base-indigo-700);
+  --semantic-brand-primary-foreground:    var(--base-neutral-50);
+
+  --semantic-brand-secondary:             var(--base-blue-700);
+  --semantic-brand-secondary-subtle:      var(--base-blue-600);
+  --semantic-brand-secondary-strong:      var(--base-blue-800);
+  --semantic-brand-secondary-foreground:  var(--base-neutral-50);
+
+  /* Feedback */
+  --semantic-success:         var(--base-success-base);
+  --semantic-success-subtle:  var(--base-success-light);
+  --semantic-success-strong:  var(--base-success-dark);
+
+  --semantic-warning:         var(--base-warning-base);
+  --semantic-warning-subtle:  var(--base-warning-light);
+  --semantic-warning-strong:  var(--base-warning-dark);
+
+  --semantic-danger:          var(--base-danger-base);
+  --semantic-danger-subtle:   var(--base-danger-light);
+  --semantic-danger-strong:   var(--base-danger-dark);
+
+  /* Surface */
+  --semantic-surface-0:        var(--base-surface-light-0);
+  --semantic-surface-2:        var(--base-surface-light-2);
+  --semantic-surface-3:        var(--base-surface-light-3);
+  --semantic-surface-overlay:  var(--base-surface-light-overlay);
+
+  /* Text */
+  --semantic-text-primary:          var(--base-neutral-900);
+  --semantic-text-primary-subtle:   var(--base-neutral-600);
+  --semantic-text-secondary:        var(--base-neutral-500);
+  --semantic-text-secondary-subtle: var(--base-neutral-50);
+
+  /* Component — input */
+  --semantic-input-border-default:   var(--base-neutral-300);
+  --semantic-input-border-focused:   var(--base-blue-600);
+  --semantic-input-border-error:     var(--base-danger-base);
+  --semantic-input-border-disabled:  var(--base-neutral-200);
+  --semantic-input-text-placeholder: var(--base-neutral-400);
+  --semantic-input-text-helper:      var(--base-neutral-500);
+  --semantic-input-text-error:       var(--base-danger-base);
+
+  /* Component — checkbox */
+  --semantic-checkbox-bg-checked:       var(--base-indigo-600);
+  --semantic-checkbox-border-default:   var(--base-neutral-300);
+  --semantic-checkbox-border-focused:   var(--base-blue-600);
+  --semantic-checkbox-border-checked:   var(--base-indigo-600);
+  --semantic-checkbox-bg-disabled:      var(--base-neutral-100);
+  --semantic-checkbox-border-disabled:  var(--base-neutral-200);
+  --semantic-checkbox-icon-checked:     var(--base-neutral-50);
+  --semantic-checkbox-icon-disabled:    var(--base-neutral-400);
+
+  /* Component — radio */
+  --semantic-radio-border-default:   var(--base-neutral-300);
+  --semantic-radio-bg-selected:      var(--base-indigo-600);
+  --semantic-radio-border-selected:  var(--base-indigo-600);
+  --semantic-radio-dot-selected:     var(--base-neutral-900);
+  --semantic-radio-bg-disabled:      var(--base-neutral-100);
+  --semantic-radio-border-disabled:  var(--base-neutral-200);
+  --semantic-radio-dot-disabled:     var(--base-neutral-400);
+
+  /* Component — toggle */
+  --semantic-toggle-track-off:       var(--base-neutral-300);
+  --semantic-toggle-track-on:        var(--base-indigo-600);
+  --semantic-toggle-track-disabled:  var(--base-neutral-200);
+  --semantic-toggle-thumb:           var(--base-neutral-50);
+  --semantic-toggle-thumb-disabled:  var(--base-neutral-400);
+
+  /* Component — status */
+  --semantic-status-online:   var(--base-success-base);
+  --semantic-status-away:     var(--base-warning-base);
+  --semantic-status-offline:  var(--base-neutral-400);
+  --semantic-status-busy:     var(--base-danger-base);
+
+  /* Component — tooltip */
+  --semantic-tooltip-bg:    var(--base-neutral-900);
+  --semantic-tooltip-text:  var(--base-neutral-50);
+  --semantic-tooltip-arrow: var(--base-neutral-900);
+
+  /* ─────────────────────────────────────────────────────
+     TIER 3 — shadcn-compatible vars
+     Consumed by tailwind.config.js → hsl(var(--*))
+     These power bg-primary, text-foreground, ring-ring, etc.
+  ───────────────────────────────────────────────────── */
+
+  --background:  var(--base-surface-light-0);   /* #ffffff */
+  --foreground:  var(--base-neutral-900);        /* #1b1e25 */
+
+  --card:             var(--base-surface-light-0);
+  --card-foreground:  var(--base-neutral-900);
+
+  --popover:             var(--base-surface-light-0);
+  --popover-foreground:  var(--base-neutral-900);
+
+  --primary:             var(--base-indigo-500);  /* #544dcb */
+  --primary-foreground:  var(--base-neutral-50);  /* #f3f4f6 */
+
+  --secondary:             var(--base-neutral-100);  /* #e8e9ee */
+  --secondary-foreground:  var(--base-neutral-900);
+
+  --muted:             var(--base-surface-light-2);  /* #f9fafb */
+  --muted-foreground:  var(--base-neutral-500);      /* #848da4 */
+
+  --accent:             var(--base-surface-light-3);  /* #f3f4f6 */
+  --accent-foreground:  var(--base-neutral-900);
+
+  --destructive:             var(--base-danger-base);          /* #ef4444 */
+  --destructive-foreground:  var(--base-surface-light-0);      /* #ffffff */
+
+  --border:  var(--base-neutral-200);  /* #d6d9e1 */
+  --input:   var(--base-neutral-300);  /* #bec4cf */
+  --ring:    var(--base-indigo-500);   /* #544dcb — brand focus ring */
+
+  --radius: 0.5rem;  /* corner_radius.8 = 8px */
+
+  /* ─────────────────────────────────────────────────────
+     TYPOGRAPHY
+  ───────────────────────────────────────────────────── */
+
+  --font-primary:   'Inter', sans-serif;
+  --font-secondary: 'Playfair Display', serif;
+  --font-mono:      'JetBrains Mono', monospace;
+
+  /* ─────────────────────────────────────────────────────
+     BORDER RADIUS — full scale from corner_radius tokens
+  ───────────────────────────────────────────────────── */
+
+  --radius-xs:   1px;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-3xl:  32px;
+  --radius-full: 999px;
+}
+
+/* ─────────────────────────────────────────────────────
+   DARK MODE overrides
+───────────────────────────────────────────────────── */
+.dark {
+  --background:  var(--base-surface-dark-0);   /* #121212 */
+  --foreground:  var(--base-neutral-50);        /* #f3f4f6 */
+
+  --card:             var(--base-surface-dark-2);
+  --card-foreground:  var(--base-neutral-50);
+
+  --popover:             var(--base-surface-dark-2);
+  --popover-foreground:  var(--base-neutral-50);
+
+  --primary:             var(--base-indigo-400);  /* #7a74e2 — lighter on dark bg */
+  --primary-foreground:  var(--base-neutral-900);
+
+  --secondary:             var(--base-surface-dark-3);
+  --secondary-foreground:  var(--base-neutral-50);
+
+  --muted:             var(--base-surface-dark-3);
+  --muted-foreground:  var(--base-neutral-400);
+
+  --accent:             var(--base-surface-dark-3);
+  --accent-foreground:  var(--base-neutral-50);
+
+  --destructive:             var(--base-danger-base);
+  --destructive-foreground:  var(--base-surface-light-0);
+
+  --border:  var(--base-surface-dark-3);
+  --input:   var(--base-neutral-700);
+  --ring:    var(--base-indigo-400);
+
+  /* Semantic surface overrides */
+  --semantic-surface-0:        var(--base-surface-dark-0);
+  --semantic-surface-2:        var(--base-surface-dark-2);
+  --semantic-surface-3:        var(--base-surface-dark-3);
+  --semantic-surface-overlay:  var(--base-surface-dark-overlay);
+
+  /* Semantic text overrides */
+  --semantic-text-primary:          var(--base-neutral-50);
+  --semantic-text-primary-subtle:   var(--base-neutral-400);
+  --semantic-text-secondary:        var(--base-neutral-500);
+  --semantic-text-secondary-subtle: var(--base-neutral-900);
+}
