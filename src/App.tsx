@@ -3,6 +3,7 @@ import './index.css'
 
 import { RootLayout } from '@/layouts/RootLayout'
 import { HomePage } from '@/pages/HomePage'
+import { FoundationsPage } from '@/pages/FoundationsPage'
 import { ColoursPage } from '@/pages/ColoursPage'
 import { TypographyPage } from '@/pages/TypographyPage'
 import { SpacingPage } from '@/pages/SpacingPage'
@@ -26,7 +27,7 @@ export default function App() {
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="foundations" element={<Navigate to="colours" replace />} />
+          <Route path="foundations" element={<FoundationsPage />} />
           <Route path="foundations/colours" element={<ColoursPage />} />
           <Route path="foundations/typography" element={<TypographyPage />} />
           <Route path="foundations/spacing" element={<SpacingPage />} />
