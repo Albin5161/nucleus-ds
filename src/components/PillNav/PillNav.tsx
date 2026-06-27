@@ -25,9 +25,9 @@ export function PillNav({
   items = [],
   activeHref,
   ease = 'power3.easeOut',
-  baseColor = '#f1f0f5',
-  pillColor = '#27272a',
-  hoveredPillTextColor = '#f1f0f5',
+  baseColor = '#1c1c1e',
+  pillColor = '#f5f5f5',
+  hoveredPillTextColor = '#f5f5f5',
   pillTextColor,
 }: PillNavProps) {
   const resolvedPillTextColor = pillTextColor ?? baseColor
