@@ -87,12 +87,12 @@ export function HomePage() {
         <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
           <Link
             to="/foundations"
-            className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors block"
+            className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors flex flex-col h-full"
           >
-            <div className="h-56 relative overflow-hidden rounded-t-2xl">
+            <div className="h-56 shrink-0 relative overflow-hidden rounded-t-2xl">
               <FoundationsIllustration />
             </div>
-            <div className="px-6 pb-6">
+            <div className="px-6 pb-6 flex-1">
               <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Foundations</h2>
               <p className="text-body-sm text-neutral-500">
                 Colour tokens, typography scale, spacing, corner radius, and elevation — the visual language every component is built on.
@@ -104,12 +104,12 @@ export function HomePage() {
         <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
           <Link
             to="/components"
-            className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors block"
+            className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors flex flex-col h-full"
           >
-            <div className="h-56 relative overflow-hidden rounded-t-2xl">
+            <div className="h-56 shrink-0 relative overflow-hidden rounded-t-2xl">
               <ComponentsIllustration />
             </div>
-            <div className="px-6 pb-6">
+            <div className="px-6 pb-6 flex-1">
               <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Components</h2>
               <p className="text-body-sm text-neutral-500">
                 10 production-ready React components built from Figma designs, token-audited, and accessible out of the box.

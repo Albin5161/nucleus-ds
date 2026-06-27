@@ -1,17 +1,18 @@
 .tilted-card-figure {
   position: relative;
   width: 100%;
+  height: 100%;
   perspective: 800px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
 }
 
 .tilted-card-inner {
   position: relative;
   transform-style: preserve-3d;
   width: 100%;
+  height: 100%;
 }
 
 .tilted-card-caption {
