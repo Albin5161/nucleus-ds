@@ -101,7 +101,13 @@ export function RootLayout() {
     navItems = components.map(c => ({ label: c.name, href: c.path }))
   }
 
-  const logoNode = <div className="h-7 w-7 rounded-lg bg-brand-primary" />
+  const logoNode = (
+    <img
+      src="/logo.png"
+      alt="Albin Sigi"
+      className="h-8 w-8 rounded-full object-cover object-top"
+    />
+  )
 
   return (
     <div className="min-h-screen bg-surface-2">
