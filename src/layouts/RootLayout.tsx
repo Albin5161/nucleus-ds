@@ -1,6 +1,7 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Dock } from '@/components/Dock'
 import { PillNav, type PillNavItem } from '@/components/PillNav'
+import { Grainient } from '@/components/Grainient'
 
 const components = [
   { name: 'Alert',            path: '/components/alert' },
@@ -110,7 +111,29 @@ export function RootLayout() {
   )
 
   return (
-    <div className="min-h-screen bg-surface-2">
+    <div className="min-h-screen relative">
+      {/* Animated grain gradient background */}
+      <div className="fixed inset-0 z-0">
+        <Grainient
+          color1="#eef2ff"
+          color2="#e0e7ff"
+          color3="#f5f3ff"
+          timeSpeed={0.06}
+          warpStrength={0.4}
+          warpFrequency={4.0}
+          warpSpeed={1.0}
+          warpAmplitude={80.0}
+          rotationAmount={300.0}
+          grainAmount={0.06}
+          grainScale={3.0}
+          contrast={1.04}
+          saturation={0.5}
+          zoom={1.3}
+        />
+      </div>
+
+      {/* All content sits above the background */}
+      <div className="relative z-10">
       <PillNav
         logoNode={logoNode}
         items={navItems}
@@ -125,6 +148,7 @@ export function RootLayout() {
         <div className="pointer-events-auto">
           <NavDock />
         </div>
+      </div>
       </div>
     </div>
   )
