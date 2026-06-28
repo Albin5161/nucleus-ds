@@ -29,6 +29,17 @@
   background-color: rgb(248, 248, 250);
 }
 
+/* Inline code chips in description paragraphs on dark bg (outside white cards) */
+.dark-layout p code.bg-neutral-100 {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
+}
+/* Reset inside white card containers */
+.dark-layout div.border-neutral-200.rounded-xl p code.bg-neutral-100 {
+  background-color: rgb(244, 244, 245);
+  color: #3f3f46;
+}
+
 /* Also cover bg-surface-0 containers so text inside them resets properly */
 .dark-layout div.border-neutral-200.rounded-xl .text-neutral-900 { color: #18181b; }
 .dark-layout div.border-neutral-200.rounded-xl .text-neutral-800 { color: #27272a; }

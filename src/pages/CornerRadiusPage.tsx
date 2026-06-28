@@ -35,7 +35,7 @@ export function CornerRadiusPage() {
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Scale</h2>
         <p className="text-body-sm text-neutral-500 mb-6">Each step applied to a 64×64px square.</p>
-        <div className="flex flex-wrap gap-8 items-end">
+        <div className="border border-neutral-200 rounded-xl p-8 flex flex-wrap gap-8 items-end">
           {RADIUS_SCALE.map(({ name, token, value }) => (
             <div key={name} className="flex flex-col items-center gap-3">
               <div
@@ -88,7 +88,7 @@ export function CornerRadiusPage() {
       <section>
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">In context</h2>
         <p className="text-body-sm text-neutral-500 mb-6">How radius steps look on real component shapes.</p>
-        <div className="flex flex-wrap gap-4 items-center">
+        <div className="border border-neutral-200 rounded-xl p-8 flex flex-wrap gap-4 items-center">
           {[
             { label: 'Tag',    cls: 'rounded      px-3 py-1   text-label',   bg: 'bg-brand-primary-subtle text-brand-primary-strong' },
             { label: 'Button', cls: 'rounded-lg   px-6 py-3   text-body',    bg: 'bg-brand-primary text-brand-primary-foreground' },
