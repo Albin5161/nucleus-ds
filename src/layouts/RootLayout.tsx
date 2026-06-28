@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Dock } from '@/components/Dock'
 import { PillNav, type PillNavItem } from '@/components/PillNav'
-import { Grainient } from '@/components/Grainient'
+import { PixelSnow } from '@/components/PixelSnow'
 
 const components = [
   { name: 'Alert',            path: '/components/alert' },
@@ -111,24 +111,20 @@ export function RootLayout() {
   )
 
   return (
-    <div className="min-h-screen relative">
-      {/* Animated grain gradient background */}
+    <div className="min-h-screen relative" style={{ background: '#0d0d14' }}>
+      {/* Pixel snow background */}
       <div className="fixed inset-0 z-0">
-        <Grainient
-          color1="#93c5fd"
-          color2="#6366f1"
-          color3="#c4b5fd"
-          timeSpeed={0.1}
-          warpStrength={0.6}
-          warpFrequency={4.0}
-          warpSpeed={1.2}
-          warpAmplitude={70.0}
-          rotationAmount={280.0}
-          grainAmount={0.055}
-          grainScale={2.5}
-          contrast={1.15}
-          saturation={1.4}
-          zoom={1.2}
+        <PixelSnow
+          color="#ffffff"
+          density={0.25}
+          speed={0.8}
+          pixelResolution={180}
+          flakeSize={0.012}
+          minFlakeSize={1.4}
+          brightness={1.1}
+          depthFade={10}
+          direction={110}
+          variant="square"
         />
       </div>
 
