@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Dock } from '@/components/Dock'
 import { PillNav, type PillNavItem } from '@/components/PillNav'
-import { PixelSnow } from '@/components/PixelSnow'
+import { Galaxy } from '@/components/Galaxy'
 
 const components = [
   { name: 'Alert',            path: '/components/alert' },
@@ -111,20 +111,21 @@ export function RootLayout() {
   )
 
   return (
-    <div className="min-h-screen relative" style={{ background: '#0d0d14' }}>
-      {/* Pixel snow background */}
+    <div className="min-h-screen relative dark-layout" style={{ background: '#07070f' }}>
+      {/* Galaxy background */}
       <div className="fixed inset-0 z-0">
-        <PixelSnow
-          color="#ffffff"
-          density={0.25}
+        <Galaxy
+          hueShift={260}
+          saturation={0.35}
+          density={1.8}
+          glowIntensity={0.45}
+          twinkleIntensity={0.4}
+          rotationSpeed={0.04}
+          mouseInteraction={true}
+          mouseRepulsion={true}
+          repulsionStrength={2.5}
+          transparent={true}
           speed={0.8}
-          pixelResolution={180}
-          flakeSize={0.012}
-          minFlakeSize={1.4}
-          brightness={1.1}
-          depthFade={10}
-          direction={110}
-          variant="square"
         />
       </div>
 
