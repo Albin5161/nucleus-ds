@@ -44,7 +44,7 @@
 .dark-layout .text-neutral-700 { color: rgba(255, 255, 255, 0.75); }
 .dark-layout .text-neutral-600 { color: rgba(255, 255, 255, 0.65); }
 .dark-layout .text-neutral-500 { color: rgba(255, 255, 255, 0.55); }
-.dark-layout .text-neutral-400 { color: rgba(255, 255, 255, 0.40); }
+.dark-layout .text-neutral-400 { color: rgba(255, 255, 255, 0.70); }
 
 /* Reset inside light-background containers (3-class specificity beats 2-class above) */
 .dark-layout .bg-surface-0 .text-neutral-900,
