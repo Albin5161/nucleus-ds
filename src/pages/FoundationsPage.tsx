@@ -111,7 +111,7 @@ export function FoundationsPage() {
           <TiltedCard key={f.name} rotateAmplitude={8} scaleOnHover={1.03}>
             <Link
               to={f.path}
-              className="group bg-neutral-100 rounded-2xl hover:bg-neutral-200/70 transition-colors flex flex-col h-full"
+              className="group bg-neutral-100 rounded-2xl hover:bg-white transition-colors flex flex-col h-full"
             >
               <div className="h-44 shrink-0 flex items-center justify-center p-6 overflow-hidden rounded-t-2xl">
                 {f.illustration}
