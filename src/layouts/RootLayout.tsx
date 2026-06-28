@@ -115,20 +115,20 @@ export function RootLayout() {
       {/* Animated grain gradient background */}
       <div className="fixed inset-0 z-0">
         <Grainient
-          color1="#eef2ff"
-          color2="#e0e7ff"
-          color3="#f5f3ff"
-          timeSpeed={0.06}
-          warpStrength={0.4}
+          color1="#93c5fd"
+          color2="#6366f1"
+          color3="#c4b5fd"
+          timeSpeed={0.1}
+          warpStrength={0.6}
           warpFrequency={4.0}
-          warpSpeed={1.0}
-          warpAmplitude={80.0}
-          rotationAmount={300.0}
-          grainAmount={0.06}
-          grainScale={3.0}
-          contrast={1.04}
-          saturation={0.5}
-          zoom={1.3}
+          warpSpeed={1.2}
+          warpAmplitude={70.0}
+          rotationAmount={280.0}
+          grainAmount={0.055}
+          grainScale={2.5}
+          contrast={1.15}
+          saturation={1.4}
+          zoom={1.2}
         />
       </div>
 
