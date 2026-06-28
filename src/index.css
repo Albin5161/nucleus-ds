@@ -15,6 +15,28 @@
   }
 }
 
+/* ── Dark layout: give card containers a white background ── */
+
+/* Section demo cards missing an explicit bg class are transparent against the galaxy.
+   Targets xl-rounded bordered divs (section-level) only — avoids color swatches,
+   inputs, table cells, and other small elements that also use border-neutral-200. */
+.dark-layout div.border-neutral-200.rounded-xl {
+  background-color: rgba(255, 255, 255, 0.97);
+}
+
+/* Preserve the subtle gray tint on preview/demo areas inside white cards */
+.dark-layout div.border-neutral-200.rounded-xl .bg-neutral-50 {
+  background-color: rgb(248, 248, 250);
+}
+
+/* Also cover bg-surface-0 containers so text inside them resets properly */
+.dark-layout div.border-neutral-200.rounded-xl .text-neutral-900 { color: #18181b; }
+.dark-layout div.border-neutral-200.rounded-xl .text-neutral-800 { color: #27272a; }
+.dark-layout div.border-neutral-200.rounded-xl .text-neutral-700 { color: #3f3f46; }
+.dark-layout div.border-neutral-200.rounded-xl .text-neutral-600 { color: #52525b; }
+.dark-layout div.border-neutral-200.rounded-xl .text-neutral-500 { color: #71717a; }
+.dark-layout div.border-neutral-200.rounded-xl .text-neutral-400 { color: #a1a1aa; }
+
 /* ── Dark layout: override text on transparent bg, reset inside light cards ── */
 
 .dark-layout .text-neutral-900 { color: rgba(255, 255, 255, 0.95); }
