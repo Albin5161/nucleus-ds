@@ -4,7 +4,7 @@ const TYPES = ['default', 'no-data', 'error'] as const
 
 export function EmptyStateCardPage() {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
       <div className="mb-10">
         <h1 className="text-h2 font-semibold text-neutral-900 mb-2">Empty State Card</h1>
         <p className="text-body text-neutral-500">

@@ -137,7 +137,7 @@ export function RootLayout() {
         activeHref={pathname}
       />
 
-      <main className="pt-20 pb-28">
+      <main className="pt-16 sm:pt-20 pb-28">
         <Outlet />
       </main>
 

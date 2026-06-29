@@ -98,7 +98,7 @@ const foundationList: { name: string; path: string; description: string; illustr
 
 export function FoundationsPage() {
   return (
-    <div className="max-w-5xl mx-auto px-8 py-10">
+    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-10">
       <div className="mb-8">
         <h1 className="text-h2 font-semibold text-neutral-900 mb-2">Foundations</h1>
         <p className="text-body text-neutral-500">
@@ -106,7 +106,7 @@ export function FoundationsPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {foundationList.map(f => (
           <TiltedCard key={f.name} rotateAmplitude={8} scaleOnHover={1.03}>
             <Link

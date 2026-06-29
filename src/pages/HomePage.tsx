@@ -74,7 +74,7 @@ function ComponentsIllustration() {
 
 export function HomePage() {
   return (
-    <div className="max-w-5xl mx-auto px-8 py-14">
+    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-14">
       <div className="mb-12">
         <h1 className="text-h1 font-semibold text-neutral-900 mb-3">Nucleus Design System</h1>
         <p className="text-body text-neutral-500 max-w-xl">
@@ -83,7 +83,7 @@ export function HomePage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
           <Link
             to="/foundations"

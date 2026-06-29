@@ -18,7 +18,7 @@ export function TogglePage() {
   const [autoSave, setAutoSave] = useState(true)
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
@@ -58,7 +58,7 @@ export function TogglePage() {
                 ↺ Reset
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-body-sm text-neutral-500">Label</label>
                 <input
@@ -98,7 +98,7 @@ export function TogglePage() {
       {/* States */}
       <section className="mb-10">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">States</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             { label: 'Off (default)', node: <Toggle label="Toggle label" /> },
             { label: 'On', node: <Toggle label="Toggle label" checked onChange={() => {}} /> },
@@ -136,7 +136,7 @@ export function TogglePage() {
       {/* Usage Guidelines */}
       <section className="mb-10">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-neutral-200 rounded-xl p-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="h-5 w-5 rounded-full bg-success-subtle flex items-center justify-center text-success-strong text-label font-bold">✓</span>

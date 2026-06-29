@@ -16,7 +16,7 @@ export function AvatarPage() {
   const [pgInitials, setPgInitials] = useState('AB')
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
@@ -47,7 +47,7 @@ export function AvatarPage() {
             />
           </div>
           <div className="border-t border-neutral-200 p-5 bg-white">
-            <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-body-sm text-neutral-500">Type</label>
                 <select
@@ -101,7 +101,7 @@ export function AvatarPage() {
       {/* Types */}
       <section className="mb-10">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Types</h2>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { label: 'Icon', node: <Avatar type="icon" size="md" status="online" /> },
             { label: 'Initials', node: <Avatar type="initials" initials="AB" size="md" status="online" /> },
@@ -185,7 +185,7 @@ export function AvatarPage() {
       {/* Usage Guidelines */}
       <section className="mb-10">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-neutral-200 rounded-xl p-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="h-5 w-5 rounded-full bg-success-subtle flex items-center justify-center text-success-strong text-label font-bold">✓</span>

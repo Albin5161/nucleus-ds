@@ -122,7 +122,7 @@ export function ButtonPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-10 flex flex-col gap-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10 flex flex-col gap-12">
 
       {/* Header */}
       <div>
@@ -228,7 +228,7 @@ export function ButtonPage() {
 
       {/* Usage guidelines */}
       <Section title="Usage guidelines">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle className="h-4 w-4 text-success" />

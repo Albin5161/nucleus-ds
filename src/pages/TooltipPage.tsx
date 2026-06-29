@@ -9,7 +9,7 @@ export function TooltipPage() {
   const [pgContent, setPgContent] = useState('Tooltip text goes here')
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
@@ -36,7 +36,7 @@ export function TooltipPage() {
             </Tooltip>
           </div>
           <div className="border-t border-neutral-200 p-5 bg-white">
-            <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-body-sm text-neutral-500">Content</label>
                 <input
@@ -64,7 +64,7 @@ export function TooltipPage() {
       {/* Positions — force open for static showcase */}
       <section className="mb-10">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Positions</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {([
             { pos: 'top',    cls: 'px-8 pt-14 pb-6' },
             { pos: 'bottom', cls: 'px-8 pb-14 pt-6' },
@@ -107,7 +107,7 @@ export function TooltipPage() {
       {/* Usage Guidelines */}
       <section className="mb-10">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-neutral-200 rounded-xl p-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="h-5 w-5 rounded-full bg-success-subtle flex items-center justify-center text-success-strong text-label font-bold">✓</span>

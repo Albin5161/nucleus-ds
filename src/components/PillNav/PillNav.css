@@ -121,3 +121,34 @@
 .pill.is-active::after {
   display: none;
 }
+
+/* ── Mobile: stretch nav full-width and allow pills to scroll ── */
+@media (max-width: 639px) {
+  .pill-nav-container {
+    left: 0.625rem;
+    right: 0.625rem;
+    transform: none;
+  }
+
+  .pill-nav {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pill-nav-items {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 9999px;
+  }
+
+  .pill-nav-items::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pill-list {
+    min-width: max-content;
+  }
+}
