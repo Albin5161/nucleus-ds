@@ -115,15 +115,15 @@ export function RootLayout() {
       {/* Galaxy background */}
       <div className="fixed inset-0 z-0">
         <Galaxy
-          hueShift={260}
-          saturation={0.35}
-          density={1.8}
-          glowIntensity={0.45}
+          hueShift={240}
+          saturation={0.8}
+          density={3}
+          glowIntensity={0.2}
           twinkleIntensity={0.4}
           rotationSpeed={0.04}
           mouseInteraction={true}
           mouseRepulsion={true}
-          repulsionStrength={2.5}
+          repulsionStrength={1.5}
           transparent={true}
           speed={0.8}
         />
