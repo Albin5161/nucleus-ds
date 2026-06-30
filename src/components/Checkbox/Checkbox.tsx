@@ -27,7 +27,7 @@ export function Checkbox({
   const isOn = checked || indeterminate
 
   const boxCls = cn(
-    'h-5 w-5 shrink-0 rounded flex items-center justify-center border-2 transition-colors',
+    'h-5 w-5 shrink-0 rounded flex items-center justify-center border-2 transition-colors duration-base ease-standard',
     isOn && !disabled && 'bg-checkbox-bg-checked border-checkbox-border-checked',
     !isOn && !disabled && 'bg-transparent border-checkbox-border-default',
     disabled && isOn  && 'bg-checkbox-bg-disabled border-checkbox-border-disabled',

@@ -7,10 +7,11 @@ const tagVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-brand-primary text-brand-primary-subtle border border-brand-primary-strong/30',
-        success: 'bg-success-subtle text-success-strong border border-success',
-        warning: 'bg-warning-subtle text-warning-strong border border-warning',
-        danger:  'bg-danger-subtle text-danger-strong border border-danger',
+        default:  'bg-brand-primary text-brand-primary-subtle border border-brand-primary-strong/30',
+        success:  'bg-success-subtle text-success-strong border border-success',
+        warning:  'bg-warning-subtle text-warning-strong border border-warning',
+        danger:   'bg-danger-subtle text-danger-strong border border-danger',
+        featured: 'bg-accent-signature/10 text-accent-signature-text border border-accent-signature',
       },
     },
     defaultVariants: { variant: 'default' },
@@ -18,17 +19,19 @@ const tagVariants = cva(
 )
 
 const dotMap: Record<string, string> = {
-  default: 'bg-brand-primary-strong',
-  success: 'bg-success',
-  warning: 'bg-warning',
-  danger:  'bg-danger',
+  default:  'bg-brand-primary-strong',
+  success:  'bg-success',
+  warning:  'bg-warning',
+  danger:   'bg-danger',
+  featured: 'bg-accent-signature',
 }
 
 const closeMap: Record<string, string> = {
-  default: 'text-brand-primary-strong hover:bg-brand-primary-strong/20',
-  success: 'text-success-strong hover:bg-success/20',
-  warning: 'text-warning-strong hover:bg-warning/20',
-  danger:  'text-danger-strong hover:bg-danger/20',
+  default:  'text-brand-primary-strong hover:bg-brand-primary-strong/20',
+  success:  'text-success-strong hover:bg-success/20',
+  warning:  'text-warning-strong hover:bg-warning/20',
+  danger:   'text-danger-strong hover:bg-danger/20',
+  featured: 'text-accent-signature-text hover:bg-accent-signature/20',
 }
 
 export interface TagProps extends VariantProps<typeof tagVariants> {
@@ -52,7 +55,7 @@ export function Tag({ label, variant = 'default', onRemove, className }: TagProp
           onClick={onRemove}
           aria-label={`Remove ${label}`}
           className={cn(
-            'h-3 w-3 rounded-full flex items-center justify-center shrink-0 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+            'h-3 w-3 rounded-full flex items-center justify-center shrink-0 transition-colors duration-fast ease-standard focus:outline-none focus-visible:ring-1 focus-visible:ring-ring',
             closeMap[v],
           )}
         >

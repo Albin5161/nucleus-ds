@@ -42,7 +42,7 @@ export function TooltipPage() {
       <section id="playground" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Playground</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
-          <div className="bg-neutral-50 flex items-center justify-center min-h-[140px] p-12">
+          <div className="demo-canvas flex items-center justify-center min-h-[140px] p-12">
             <Tooltip content={pgContent} position={pgPosition}>
               <Button variant="outline" size="sm">Hover me</Button>
             </Tooltip>
@@ -120,7 +120,7 @@ export function TooltipPage() {
       <section id="usage-guidelines" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="border border-neutral-200 rounded-xl p-6">
+          <div className="border border-neutral-200 border-l-4 border-l-success rounded-xl p-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="h-5 w-5 rounded-full bg-success-subtle flex items-center justify-center text-success-strong text-label font-bold">✓</span>
               <span className="text-body-sm font-semibold text-neutral-700">When to use</span>
@@ -137,7 +137,7 @@ export function TooltipPage() {
               ))}
             </ul>
           </div>
-          <div className="border border-neutral-200 rounded-xl p-6">
+          <div className="border border-neutral-200 border-l-4 border-l-danger rounded-xl p-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="h-5 w-5 rounded-full bg-danger-subtle flex items-center justify-center text-danger text-label font-bold">✕</span>
               <span className="text-body-sm font-semibold text-neutral-700">When not to use</span>

@@ -61,24 +61,49 @@
 .dark-layout .bg-surface-0 .text-neutral-900,
 .dark-layout .bg-neutral-100 .text-neutral-900,
 .dark-layout .bg-neutral-50 .text-neutral-900,
-.dark-layout .bg-white .text-neutral-900 { color: #18181b; }
+.dark-layout .bg-white .text-neutral-900,
+.dark-layout .glass-surface .text-neutral-900 { color: #18181b; }
 
 .dark-layout .bg-surface-0 .text-neutral-800,
 .dark-layout .bg-neutral-100 .text-neutral-800,
-.dark-layout .bg-white .text-neutral-800 { color: #27272a; }
+.dark-layout .bg-white .text-neutral-800,
+.dark-layout .glass-surface .text-neutral-800 { color: #27272a; }
 
 .dark-layout .bg-surface-0 .text-neutral-700,
 .dark-layout .bg-neutral-100 .text-neutral-700,
-.dark-layout .bg-white .text-neutral-700 { color: #3f3f46; }
+.dark-layout .bg-white .text-neutral-700,
+.dark-layout .glass-surface .text-neutral-700 { color: #3f3f46; }
 
 .dark-layout .bg-surface-0 .text-neutral-600,
 .dark-layout .bg-neutral-100 .text-neutral-600,
-.dark-layout .bg-white .text-neutral-600 { color: #52525b; }
+.dark-layout .bg-white .text-neutral-600,
+.dark-layout .glass-surface .text-neutral-600 { color: #52525b; }
 
 .dark-layout .bg-surface-0 .text-neutral-500,
 .dark-layout .bg-neutral-100 .text-neutral-500,
-.dark-layout .bg-white .text-neutral-500 { color: #71717a; }
+.dark-layout .bg-white .text-neutral-500,
+.dark-layout .glass-surface .text-neutral-500 { color: #71717a; }
 
 .dark-layout .bg-surface-0 .text-neutral-400,
 .dark-layout .bg-neutral-100 .text-neutral-400,
-.dark-layout .bg-white .text-neutral-400 { color: #a1a1aa; }
+.dark-layout .bg-white .text-neutral-400,
+.dark-layout .glass-surface .text-neutral-400 { color: #a1a1aa; }
+
+/* Playground "live demo" canvas — dot-grid background marks the interactive
+   preview area as distinct from the static reference cards elsewhere on a
+   component page (Variants, Props, etc). */
+.demo-canvas {
+  background-color: #fafafa;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.09) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Shared frosted-glass material — see --glass-* tokens in tokens.css.
+   Used by PillNav, Dock, and the TableOfContents hover panel. */
+.glass-surface {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}

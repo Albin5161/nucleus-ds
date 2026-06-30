@@ -23,14 +23,14 @@ export function RadioButton({
   const id = externalId ?? autoId
 
   const circleCls = cn(
-    'h-4 w-4 shrink-0 rounded-full border-2 flex items-center justify-center transition-colors',
+    'h-4 w-4 shrink-0 rounded-full border-2 flex items-center justify-center transition-colors duration-base ease-standard',
     checked && !disabled && 'bg-radio-bg-selected border-radio-border-selected',
     !checked && !disabled && 'bg-transparent border-radio-border-default',
     disabled && 'bg-radio-bg-disabled border-radio-border-disabled',
   )
 
   const dotCls = cn(
-    'h-2 w-2 rounded-full transition-colors',
+    'h-2 w-2 rounded-full transition-colors duration-fast ease-standard',
     checked && !disabled && 'bg-radio-dot-selected',
     checked && disabled && 'bg-radio-dot-disabled',
   )

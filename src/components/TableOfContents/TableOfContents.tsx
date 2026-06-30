@@ -58,7 +58,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     >
       <div
         className={cn(
-          'flex flex-col items-end gap-2.5 py-2 transition-opacity duration-150',
+          'flex flex-col items-end gap-2.5 py-2 transition-opacity duration-base ease-standard',
           hovered ? 'opacity-0 pointer-events-none absolute right-0 top-0' : 'opacity-100'
         )}
       >
@@ -66,8 +66,8 @@ export function TableOfContents({ items }: TableOfContentsProps) {
           <span
             key={item.id}
             className={cn(
-              'h-0.5 rounded-full transition-all',
-              item.id === activeId ? 'w-6 bg-white' : 'w-3 bg-white/30'
+              'h-0.5 rounded-full transition-all duration-base ease-standard',
+              item.id === activeId ? 'w-6 bg-accent-signature' : 'w-3 bg-white/30'
             )}
           />
         ))}
@@ -75,7 +75,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
       <div
         className={cn(
-          'rounded-xl border border-white/10 bg-neutral-900/85 backdrop-blur-md shadow-xl px-4 py-3 flex flex-col gap-2 max-w-[220px] transition-opacity duration-150',
+          'glass-surface rounded-xl px-4 py-3 flex flex-col gap-2 max-w-[220px] transition-opacity duration-base ease-standard',
           hovered ? 'opacity-100' : 'opacity-0 pointer-events-none absolute right-0 top-0'
         )}
       >
@@ -85,8 +85,8 @@ export function TableOfContents({ items }: TableOfContentsProps) {
             type="button"
             onClick={() => handleClick(item.id)}
             className={cn(
-              'text-left text-body-sm transition-colors whitespace-nowrap overflow-hidden text-ellipsis',
-              item.id === activeId ? 'text-white font-medium' : 'text-white/50 hover:text-white/80'
+              'text-left text-body-sm transition-colors duration-base ease-standard whitespace-nowrap overflow-hidden text-ellipsis',
+              item.id === activeId ? 'text-accent-signature-text font-medium' : 'text-neutral-500 hover:text-neutral-700'
             )}
           >
             {item.label}

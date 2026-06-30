@@ -114,7 +114,7 @@ export function InputFieldPage() {
       {/* Playground */}
       <Section id="playground" title="Playground">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
-          <div className="bg-neutral-50 border-b border-neutral-200 px-10 py-12 flex items-center justify-center min-h-[160px]">
+          <div className="demo-canvas border-b border-neutral-200 px-10 py-12 flex items-center justify-center min-h-[160px]">
             <div className="w-full max-w-sm">
               <InputField
                 label={state.label || undefined}
@@ -214,7 +214,7 @@ export function InputFieldPage() {
       {/* Usage guidelines */}
       <Section id="usage-guidelines" title="Usage guidelines">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
+          <div className="bg-surface-0 rounded-xl border border-neutral-200 border-l-4 border-l-success p-6">
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle className="h-4 w-4 text-success" />
               <span className="text-label font-semibold uppercase tracking-widest text-success">When to use</span>
@@ -228,7 +228,7 @@ export function InputFieldPage() {
               ))}
             </ul>
           </div>
-          <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
+          <div className="bg-surface-0 rounded-xl border border-neutral-200 border-l-4 border-l-danger p-6">
             <div className="flex items-center gap-2 mb-4">
               <XCircle className="h-4 w-4 text-danger" />
               <span className="text-label font-semibold uppercase tracking-widest text-danger">When not to use</span>

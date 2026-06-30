@@ -4,7 +4,7 @@ import { Badge } from '@/components/Badge'
 import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
 import { TableOfContents } from '@/components/TableOfContents'
 
-type TagVariant = 'default' | 'success' | 'warning' | 'danger'
+type TagVariant = 'default' | 'success' | 'warning' | 'danger' | 'featured'
 type BadgeVariant = 'default' | 'success' | 'warning' | 'danger'
 
 const TOC_ITEMS = [
@@ -34,7 +34,7 @@ export function TagBadgePage() {
   // Tag group demo
   const [activeTags, setActiveTags] = useState(['React', 'TypeScript', 'Figma', 'Design System'])
 
-  const tagVariants: TagVariant[] = ['default', 'success', 'warning', 'danger']
+  const tagVariants: TagVariant[] = ['default', 'success', 'warning', 'danger', 'featured']
   const badgeVariants: BadgeVariant[] = ['default', 'success', 'warning', 'danger']
 
   return (
@@ -60,7 +60,7 @@ export function TagBadgePage() {
       <section id="tag-playground" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Playground</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
-          <div className="bg-neutral-50 flex items-center justify-center min-h-[100px] p-8">
+          <div className="demo-canvas flex items-center justify-center min-h-[100px] p-8">
             <Tag
               label={tagLabel}
               variant={tagVariant}
@@ -169,7 +169,7 @@ export function TagBadgePage() {
       <section id="badge-playground" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Playground</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
-          <div className="bg-neutral-50 flex items-center justify-center min-h-[100px] p-8">
+          <div className="demo-canvas flex items-center justify-center min-h-[100px] p-8">
             <Badge count={badgeCount} max={badgeMax} variant={badgeVariant} />
           </div>
           <div className="border-t border-neutral-200 p-5 bg-white">
@@ -297,7 +297,7 @@ export function TagBadgePage() {
             <tbody className="divide-y divide-neutral-100">
               {[
                 ['label','string','required','Text displayed inside the tag.'],
-                ['variant','"default"|"success"|"warning"|"danger"','"default"','Visual colour variant.'],
+                ['variant','"default"|"success"|"warning"|"danger"|"featured"','"default"','Visual colour variant. "featured" uses the signature accent — use sparingly.'],
                 ['onRemove','() => void','—','If provided, shows an × button and calls this on click.'],
               ].map(([p,t,d,desc]) => (
                 <tr key={p} className="bg-white hover:bg-neutral-50">
@@ -351,6 +351,7 @@ export function TagBadgePage() {
           <>
             <ContrastCheck label="Tag — default" fgClassName="text-brand-primary-subtle" bgClassName="bg-brand-primary" level="text" />
             <ContrastCheck label="Tag — danger" fgClassName="text-danger-strong" bgClassName="bg-danger-subtle" level="text" />
+            <ContrastCheck label="Tag — featured" fgClassName="text-accent-signature-text" bgClassName="bg-surface-0" level="text" />
             <ContrastCheck label="Badge — default" fgClassName="text-brand-primary-foreground" bgClassName="bg-brand-primary" level="text" />
             <ContrastCheck label="Badge — danger" fgClassName="text-white" bgClassName="bg-danger" level="text" />
           </>

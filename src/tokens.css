@@ -169,6 +169,23 @@
   --semantic-tooltip-text:  var(--base-neutral-50);
   --semantic-tooltip-arrow: var(--base-neutral-900);
 
+  /* Signature accent — sparing use only (TOC active state, "featured" tag
+     variant). Pulled from the Galaxy background's actual rendered star
+     palette: sits between the indigo primary and blue secondary on the
+     wheel, so it reads as an extension of the brand rather than a clash.
+     Two stops: the base for fills/borders/dots (3:1 UI contrast), and a
+     darker -text stop for use as text on light backgrounds (4.5:1 AA). */
+  --semantic-accent-signature:      275 70% 62%;  /* #a95ae2 */
+  --semantic-accent-signature-text: 275 70% 58%;  /* #a049df */
+
+  /* Material — frosted glass. Shared by every floating chrome surface that
+     sits on the Galaxy backdrop (PillNav, Dock, TableOfContents hover panel)
+     so they read as one material system rather than independently-tuned blur. */
+  --glass-bg:     rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-blur:   16px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+
   /* ─────────────────────────────────────────────────────
      TIER 3 — shadcn-compatible vars
      Consumed by tailwind.config.js → hsl(var(--*))
@@ -227,6 +244,22 @@
   --radius-2xl:  24px;
   --radius-3xl:  32px;
   --radius-full: 999px;
+
+  /* ─────────────────────────────────────────────────────
+     MOTION — duration + easing scale
+     --duration-base / ease-standard match what Tailwind's bare
+     transition-colors/transition-transform utilities already used by
+     default — naming them turns that accidental consistency into an
+     intentional, documented token instead of an unreferenced default.
+  ───────────────────────────────────────────────────── */
+
+  --duration-fast: 100ms;  /* micro-feedback — icon/dot state flips */
+  --duration-base: 150ms;  /* default — hover, focus, color/transform changes */
+  --duration-slow: 250ms;  /* larger surface changes — card hover, panel expand */
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);  /* general-purpose, matches Tailwind's default curve */
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);  /* entrances — starts fast, settles in */
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);  /* exits — starts slow, leaves fast */
 }
 
 /* ─────────────────────────────────────────────────────

@@ -42,7 +42,7 @@ export function Toggle({
       {/* Track */}
       <div
         className={cn(
-          'relative w-12 h-6 rounded-full transition-colors shrink-0',
+          'relative w-12 h-6 rounded-full transition-colors duration-base ease-standard shrink-0',
           'peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2',
           checked && !disabled && 'bg-toggle-track-on',
           !checked && !disabled && 'bg-toggle-track-off',
@@ -53,7 +53,7 @@ export function Toggle({
         {/* Thumb */}
         <span
           className={cn(
-            'absolute top-[2px] h-5 w-5 rounded-full shadow-sm transition-transform',
+            'absolute top-[2px] h-5 w-5 rounded-full shadow-sm transition-transform duration-base ease-decelerate',
             checked ? 'translate-x-[26px]' : 'translate-x-[2px]',
             disabled ? 'bg-toggle-thumb-disabled' : 'bg-toggle-thumb',
           )}

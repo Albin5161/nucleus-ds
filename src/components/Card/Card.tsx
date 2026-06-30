@@ -8,7 +8,7 @@ const cardVariants = cva(
     variants: {
       tone: {
         static: 'bg-surface-0',
-        interactive: 'bg-neutral-100 hover:bg-white transition-colors cursor-pointer',
+        interactive: 'bg-neutral-100 hover:bg-white transition-colors duration-slow ease-standard cursor-pointer',
       },
       padding: {
         none: '',

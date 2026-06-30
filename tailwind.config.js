@@ -206,6 +206,24 @@ export default {
           bg:   'hsl(var(--semantic-tooltip-bg))',
           text: 'hsl(var(--semantic-tooltip-text))',
         },
+
+        /* ── Signature accent — sparing use only, see tokens.css ── */
+        'accent-signature': {
+          DEFAULT: 'hsl(var(--semantic-accent-signature))',
+          text:    'hsl(var(--semantic-accent-signature-text))',
+        },
+      },
+
+      /* ── Motion — duration + easing scale (see tokens.css --duration-x / --ease-x) ── */
+      transitionDuration: {
+        fast: 'var(--duration-fast)',
+        base: 'var(--duration-base)',
+        slow: 'var(--duration-slow)',
+      },
+      transitionTimingFunction: {
+        standard:   'var(--ease-standard)',
+        decelerate: 'var(--ease-decelerate)',
+        accelerate: 'var(--ease-accelerate)',
       },
 
       /* ── Animations (shadcn accordion) ── */

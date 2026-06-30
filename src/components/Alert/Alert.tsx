@@ -113,7 +113,7 @@ export function Alert({
           aria-label="Dismiss"
           onClick={onDismiss}
           className={cn(
-            'mt-0.5 shrink-0 rounded-sm opacity-70 transition-opacity',
+            'mt-0.5 shrink-0 rounded-sm opacity-70 transition-opacity duration-base ease-standard',
             'hover:opacity-100',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
             'disabled:pointer-events-none disabled:opacity-50',

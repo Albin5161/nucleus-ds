@@ -154,7 +154,7 @@ export function ButtonPage() {
       <Section id="playground" title="Playground">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           {/* Live preview */}
-          <div className="bg-neutral-50 border-b border-neutral-200 px-10 py-16 flex items-center justify-center min-h-[160px]">
+          <div className="demo-canvas border-b border-neutral-200 px-10 py-16 flex items-center justify-center min-h-[160px]">
             <Button
               variant={state.variant}
               size={state.size}
@@ -241,7 +241,7 @@ export function ButtonPage() {
       {/* Usage guidelines */}
       <Section id="usage-guidelines" title="Usage guidelines">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
+          <div className="bg-surface-0 rounded-xl border border-neutral-200 border-l-4 border-l-success p-6">
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle className="h-4 w-4 text-success" />
               <span className="text-label font-semibold uppercase tracking-widest text-success">When to use</span>
@@ -255,7 +255,7 @@ export function ButtonPage() {
               ))}
             </ul>
           </div>
-          <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
+          <div className="bg-surface-0 rounded-xl border border-neutral-200 border-l-4 border-l-danger p-6">
             <div className="flex items-center gap-2 mb-4">
               <XCircle className="h-4 w-4 text-danger" />
               <span className="text-label font-semibold uppercase tracking-widest text-danger">When not to use</span>

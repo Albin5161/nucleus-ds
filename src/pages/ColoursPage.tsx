@@ -1,40 +1,57 @@
 import { useEffect, useRef, useState } from 'react'
-import { Card } from '@/components/Card'
 
 type Swatch = { label: string; cls: string }
 
-function rgbToHex(rgb: string): string {
+function rgbToHsl(rgb: string): string {
   const match = rgb.match(/\d+(\.\d+)?/g)
   if (!match) return ''
-  const [r, g, b] = match.map(Number)
-  return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase()
+  const [r, g, b] = match.map(Number).map(v => v / 255)
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  const l = (max + min) / 2
+  let h = 0
+  let s = 0
+  const d = max - min
+  if (d !== 0) {
+    s = d / (1 - Math.abs(2 * l - 1))
+    switch (max) {
+      case r: h = ((g - b) / d) % 6; break
+      case g: h = (b - r) / d + 2; break
+      default: h = (r - g) / d + 4
+    }
+    h *= 60
+    if (h < 0) h += 360
+  }
+  return `hsl(${Math.round(h)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`
 }
 
 function ColorSwatch({ label, cls }: Swatch) {
   const ref = useRef<HTMLDivElement>(null)
-  const [hex, setHex] = useState('')
+  const [hsl, setHsl] = useState('')
 
   useEffect(() => {
     if (!ref.current) return
-    setHex(rgbToHex(getComputedStyle(ref.current).backgroundColor))
+    setHsl(rgbToHsl(getComputedStyle(ref.current).backgroundColor))
   }, [cls])
 
   return (
-    <div className="flex flex-col gap-1.5 w-20">
-      <div ref={ref} className={`h-10 w-full rounded-lg border border-neutral-200 ${cls}`} />
-      <span className="text-[10px] leading-tight text-neutral-500 font-mono break-all">{label}</span>
-      <span className="text-[10px] leading-tight text-neutral-400 font-mono">{hex}</span>
+    <div className="rounded-2xl border border-neutral-200 bg-surface-0 overflow-hidden shadow-sm">
+      <div ref={ref} className={`h-28 w-full ${cls}`} />
+      <div className="p-4">
+        <p className="text-h4 font-semibold text-neutral-900">{label}</p>
+        <p className="text-label text-neutral-500 mt-1 break-words">{hsl}</p>
+      </div>
     </div>
   )
 }
 
 function SwatchRow({ title, swatches }: { title: string; swatches: Swatch[] }) {
   return (
-    <div className="mb-8">
-      <h3 className="text-label font-semibold uppercase tracking-widest text-neutral-400 mb-3">
+    <div className="mb-10">
+      <h3 className="text-label font-semibold uppercase tracking-widest text-neutral-400 mb-4">
         {title}
       </h3>
-      <div className="flex flex-wrap gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {swatches.map(swatch => (
           <ColorSwatch key={swatch.label} {...swatch} />
         ))}
@@ -46,84 +63,82 @@ function SwatchRow({ title, swatches }: { title: string; swatches: Swatch[] }) {
 export function ColoursPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
-      <div className="mb-8">
+      <div className="mb-10">
         <h1 className="text-h2 font-semibold text-neutral-900 mb-2">Colours</h1>
         <p className="text-body text-neutral-500">
           3-tier token system — base primitives → semantic aliases → shadcn-compatible utilities.
         </p>
       </div>
 
-      <Card padding="lg" className="space-y-2">
-        <SwatchRow title="Brand Primary — Indigo" swatches={[
-          { label: '50',  cls: 'bg-indigo-50' },
-          { label: '100', cls: 'bg-indigo-100' },
-          { label: '200', cls: 'bg-indigo-200' },
-          { label: '300', cls: 'bg-indigo-300' },
-          { label: '400', cls: 'bg-indigo-400' },
-          { label: '500', cls: 'bg-indigo-500' },
-          { label: '600', cls: 'bg-indigo-600' },
-          { label: '700', cls: 'bg-indigo-700' },
-          { label: '800', cls: 'bg-indigo-800' },
-          { label: '900', cls: 'bg-indigo-900' },
-        ]} />
+      <SwatchRow title="Brand Primary — Indigo" swatches={[
+        { label: '50',  cls: 'bg-indigo-50' },
+        { label: '100', cls: 'bg-indigo-100' },
+        { label: '200', cls: 'bg-indigo-200' },
+        { label: '300', cls: 'bg-indigo-300' },
+        { label: '400', cls: 'bg-indigo-400' },
+        { label: '500', cls: 'bg-indigo-500' },
+        { label: '600', cls: 'bg-indigo-600' },
+        { label: '700', cls: 'bg-indigo-700' },
+        { label: '800', cls: 'bg-indigo-800' },
+        { label: '900', cls: 'bg-indigo-900' },
+      ]} />
 
-        <SwatchRow title="Brand Secondary — Blue" swatches={[
-          { label: '50',  cls: 'bg-ds-blue-50' },
-          { label: '100', cls: 'bg-ds-blue-100' },
-          { label: '200', cls: 'bg-ds-blue-200' },
-          { label: '300', cls: 'bg-ds-blue-300' },
-          { label: '400', cls: 'bg-ds-blue-400' },
-          { label: '500', cls: 'bg-ds-blue-500' },
-          { label: '600', cls: 'bg-ds-blue-600' },
-          { label: '700', cls: 'bg-ds-blue-700' },
-          { label: '800', cls: 'bg-ds-blue-800' },
-          { label: '900', cls: 'bg-ds-blue-900' },
-        ]} />
+      <SwatchRow title="Brand Secondary — Blue" swatches={[
+        { label: '50',  cls: 'bg-ds-blue-50' },
+        { label: '100', cls: 'bg-ds-blue-100' },
+        { label: '200', cls: 'bg-ds-blue-200' },
+        { label: '300', cls: 'bg-ds-blue-300' },
+        { label: '400', cls: 'bg-ds-blue-400' },
+        { label: '500', cls: 'bg-ds-blue-500' },
+        { label: '600', cls: 'bg-ds-blue-600' },
+        { label: '700', cls: 'bg-ds-blue-700' },
+        { label: '800', cls: 'bg-ds-blue-800' },
+        { label: '900', cls: 'bg-ds-blue-900' },
+      ]} />
 
-        <SwatchRow title="Neutrals" swatches={[
-          { label: '50',  cls: 'bg-neutral-50' },
-          { label: '100', cls: 'bg-neutral-100' },
-          { label: '200', cls: 'bg-neutral-200' },
-          { label: '300', cls: 'bg-neutral-300' },
-          { label: '400', cls: 'bg-neutral-400' },
-          { label: '500', cls: 'bg-neutral-500' },
-          { label: '600', cls: 'bg-neutral-600' },
-          { label: '700', cls: 'bg-neutral-700' },
-          { label: '800', cls: 'bg-neutral-800' },
-          { label: '900', cls: 'bg-neutral-900' },
-        ]} />
+      <SwatchRow title="Neutrals" swatches={[
+        { label: '50',  cls: 'bg-neutral-50' },
+        { label: '100', cls: 'bg-neutral-100' },
+        { label: '200', cls: 'bg-neutral-200' },
+        { label: '300', cls: 'bg-neutral-300' },
+        { label: '400', cls: 'bg-neutral-400' },
+        { label: '500', cls: 'bg-neutral-500' },
+        { label: '600', cls: 'bg-neutral-600' },
+        { label: '700', cls: 'bg-neutral-700' },
+        { label: '800', cls: 'bg-neutral-800' },
+        { label: '900', cls: 'bg-neutral-900' },
+      ]} />
 
-        <SwatchRow title="Feedback" swatches={[
-          { label: 'success',         cls: 'bg-success' },
-          { label: 'success-subtle',  cls: 'bg-success-subtle' },
-          { label: 'success-strong',  cls: 'bg-success-strong' },
-          { label: 'warning',         cls: 'bg-warning' },
-          { label: 'warning-subtle',  cls: 'bg-warning-subtle' },
-          { label: 'warning-strong',  cls: 'bg-warning-strong' },
-          { label: 'danger',          cls: 'bg-danger' },
-          { label: 'danger-subtle',   cls: 'bg-danger-subtle' },
-          { label: 'danger-strong',   cls: 'bg-danger-strong' },
-        ]} />
+      <SwatchRow title="Feedback" swatches={[
+        { label: 'success',         cls: 'bg-success' },
+        { label: 'success-subtle',  cls: 'bg-success-subtle' },
+        { label: 'success-strong',  cls: 'bg-success-strong' },
+        { label: 'warning',         cls: 'bg-warning' },
+        { label: 'warning-subtle',  cls: 'bg-warning-subtle' },
+        { label: 'warning-strong',  cls: 'bg-warning-strong' },
+        { label: 'danger',          cls: 'bg-danger' },
+        { label: 'danger-subtle',   cls: 'bg-danger-subtle' },
+        { label: 'danger-strong',   cls: 'bg-danger-strong' },
+      ]} />
 
-        <SwatchRow title="shadcn Semantic" swatches={[
-          { label: 'background',  cls: 'bg-background' },
-          { label: 'foreground',  cls: 'bg-foreground' },
-          { label: 'primary',     cls: 'bg-primary' },
-          { label: 'primary-fg',  cls: 'bg-primary-foreground' },
-          { label: 'secondary',   cls: 'bg-secondary' },
-          { label: 'muted',       cls: 'bg-muted' },
-          { label: 'accent',      cls: 'bg-accent' },
-          { label: 'destructive', cls: 'bg-destructive' },
-          { label: 'border',      cls: 'bg-border' },
-        ]} />
+      <SwatchRow title="shadcn Semantic" swatches={[
+        { label: 'background',  cls: 'bg-background' },
+        { label: 'foreground',  cls: 'bg-foreground' },
+        { label: 'primary',     cls: 'bg-primary' },
+        { label: 'primary-fg',  cls: 'bg-primary-foreground' },
+        { label: 'secondary',   cls: 'bg-secondary' },
+        { label: 'muted',       cls: 'bg-muted' },
+        { label: 'accent',      cls: 'bg-accent' },
+        { label: 'destructive', cls: 'bg-destructive' },
+        { label: 'border',      cls: 'bg-border' },
+      ]} />
 
-        <SwatchRow title="Status" swatches={[
-          { label: 'online',  cls: 'bg-status-online' },
-          { label: 'away',    cls: 'bg-status-away' },
-          { label: 'offline', cls: 'bg-status-offline' },
-          { label: 'busy',    cls: 'bg-status-busy' },
-        ]} />
-      </Card>
+      <SwatchRow title="Status" swatches={[
+        { label: 'online',  cls: 'bg-status-online' },
+        { label: 'away',    cls: 'bg-status-away' },
+        { label: 'offline', cls: 'bg-status-offline' },
+        { label: 'busy',    cls: 'bg-status-busy' },
+      ]} />
     </div>
   )
 }
