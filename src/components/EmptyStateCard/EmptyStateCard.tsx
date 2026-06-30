@@ -86,7 +86,7 @@ export function EmptyStateCard({
       )}
 
       {/* Body */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 flex-1">
         <h3 className="text-h4 text-foreground">{resolvedHeadline}</h3>
         <p className="text-body text-foreground">{resolvedDescription}</p>
       </div>

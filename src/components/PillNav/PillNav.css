@@ -8,8 +8,8 @@
 
 .pill-nav {
   --nav-h: 40px;
-  --pill-pad-x: 16px;
-  --pill-gap: 3px;
+  --pill-pad-x: 20px;
+  --pill-gap: 6px;
   width: max-content;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
   align-items: stretch;
   gap: var(--pill-gap);
   margin: 0;
-  padding: 3px;
+  padding: 4px;
   height: 100%;
 }
 

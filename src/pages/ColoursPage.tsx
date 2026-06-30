@@ -1,4 +1,31 @@
+import { useEffect, useRef, useState } from 'react'
+
 type Swatch = { label: string; cls: string }
+
+function rgbToHex(rgb: string): string {
+  const match = rgb.match(/\d+(\.\d+)?/g)
+  if (!match) return ''
+  const [r, g, b] = match.map(Number)
+  return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase()
+}
+
+function ColorSwatch({ label, cls }: Swatch) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [hex, setHex] = useState('')
+
+  useEffect(() => {
+    if (!ref.current) return
+    setHex(rgbToHex(getComputedStyle(ref.current).backgroundColor))
+  }, [cls])
+
+  return (
+    <div className="flex flex-col gap-1.5 w-20">
+      <div ref={ref} className={`h-10 w-full rounded-lg border border-neutral-200 ${cls}`} />
+      <span className="text-[10px] leading-tight text-neutral-500 font-mono break-all">{label}</span>
+      <span className="text-[10px] leading-tight text-neutral-400 font-mono">{hex}</span>
+    </div>
+  )
+}
 
 function SwatchRow({ title, swatches }: { title: string; swatches: Swatch[] }) {
   return (
@@ -7,11 +34,8 @@ function SwatchRow({ title, swatches }: { title: string; swatches: Swatch[] }) {
         {title}
       </h3>
       <div className="flex flex-wrap gap-3">
-        {swatches.map(({ label, cls }) => (
-          <div key={label} className="flex flex-col gap-1.5 w-20">
-            <div className={`h-10 w-full rounded-lg border border-neutral-200 ${cls}`} />
-            <span className="text-[10px] leading-tight text-neutral-500 font-mono break-all">{label}</span>
-          </div>
+        {swatches.map(swatch => (
+          <ColorSwatch key={swatch.label} {...swatch} />
         ))}
       </div>
     </div>
