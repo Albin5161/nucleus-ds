@@ -1,7 +1,18 @@
 import { useState } from 'react'
 import { RotateCcw, CheckCircle, XCircle, ArrowRight, Plus } from 'lucide-react'
 import { Button } from '@/components/Button'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
+import { TableOfContents } from '@/components/TableOfContents'
 import { cn } from '@/lib/utils'
+
+const TOC_ITEMS = [
+  { id: 'playground', label: 'Playground' },
+  { id: 'variants', label: 'Variants' },
+  { id: 'states', label: 'States' },
+  { id: 'usage-guidelines', label: 'Usage guidelines' },
+  { id: 'props', label: 'Props' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 type Variant = 'primary' | 'outline' | 'ghost' | 'secondary' | 'danger'
 type Size = 'sm' | 'md' | 'lg'
@@ -84,9 +95,9 @@ function ControlRow({ label, children }: { label: string; children: React.ReactN
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <div>
+    <div id={id} className={id ? 'scroll-mt-28' : undefined}>
       <h2 className="text-label font-semibold uppercase tracking-widest text-neutral-400 mb-4">{title}</h2>
       {children}
     </div>
@@ -123,6 +134,7 @@ export function ButtonPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10 flex flex-col gap-12">
+      <TableOfContents items={TOC_ITEMS} />
 
       {/* Header */}
       <div>
@@ -139,7 +151,7 @@ export function ButtonPage() {
       </div>
 
       {/* Playground */}
-      <Section title="Playground">
+      <Section id="playground" title="Playground">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           {/* Live preview */}
           <div className="bg-neutral-50 border-b border-neutral-200 px-10 py-16 flex items-center justify-center min-h-[160px]">
@@ -190,7 +202,7 @@ export function ButtonPage() {
       </Section>
 
       {/* Variants × Sizes grid */}
-      <Section title="Variants">
+      <Section id="variants" title="Variants">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           {/* Header row */}
           <div className="grid grid-cols-4 border-b border-neutral-200 bg-neutral-50">
@@ -216,7 +228,7 @@ export function ButtonPage() {
       </Section>
 
       {/* States */}
-      <Section title="States">
+      <Section id="states" title="States">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6 flex flex-wrap gap-4 items-center">
           <Button variant="primary">Default</Button>
           <Button variant="primary" isLoading>Loading</Button>
@@ -227,7 +239,7 @@ export function ButtonPage() {
       </Section>
 
       {/* Usage guidelines */}
-      <Section title="Usage guidelines">
+      <Section id="usage-guidelines" title="Usage guidelines">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
             <div className="flex items-center gap-2 mb-4">
@@ -261,7 +273,7 @@ export function ButtonPage() {
       </Section>
 
       {/* Props table */}
-      <Section title="Props">
+      <Section id="props" title="Props">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           <table className="w-full text-body-sm">
             <thead>
@@ -290,6 +302,28 @@ export function ButtonPage() {
             </tbody>
           </table>
         </div>
+      </Section>
+
+      {/* Accessibility */}
+      <Section id="accessibility" title="Accessibility">
+        <AccessibilitySection
+          bare
+          role="Native <button> — keeps full built-in semantics, no role override needed."
+          keyboard={[
+            'Tab moves focus to the button.',
+            'Enter or Space activates it.',
+            'disabled (including isLoading, which sets disabled internally) removes it from the tab order.',
+          ]}
+          screenReader="Announced using its visible text content. When isLoading is true the label stays in the DOM (the spinner is aria-hidden), so screen readers keep reading the same label rather than announcing nothing — consider pairing with aria-busy if the action takes a long time."
+          contrastChecks={
+            <>
+              <ContrastCheck label="Primary" fgClassName="text-primary-foreground" bgClassName="bg-primary" level="text" />
+              <ContrastCheck label="Secondary" fgClassName="text-brand-secondary-foreground" bgClassName="bg-brand-secondary" level="text" />
+              <ContrastCheck label="Danger" fgClassName="text-destructive-foreground" bgClassName="bg-destructive" level="text" />
+              <ContrastCheck label="Outline" fgClassName="text-primary" bgClassName="bg-surface-0" level="text" />
+            </>
+          }
+        />
       </Section>
 
     </div>

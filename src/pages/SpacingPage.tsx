@@ -1,3 +1,5 @@
+import { Card } from '@/components/Card'
+
 const SCALE = [
   { token: '0',   px: 0  },
   { token: '0.5', px: 2  },
@@ -47,7 +49,7 @@ export function SpacingPage() {
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Scale</h2>
         <p className="text-body-sm text-neutral-500 mb-6">Base unit: <code className="bg-neutral-100 px-1 rounded text-label">4px</code></p>
-        <div className="border border-neutral-200 rounded-xl p-6 flex flex-col gap-2">
+        <Card padding="md" className="flex flex-col gap-2">
           {SCALE.map(({ token, px }) => (
             <div key={token} className="flex items-center gap-4">
               <span className="text-label text-neutral-400 w-8 text-right shrink-0">{token}</span>
@@ -58,14 +60,14 @@ export function SpacingPage() {
               <span className="text-label text-neutral-500">{px}px</span>
             </div>
           ))}
-        </div>
+        </Card>
       </section>
 
       {/* Common usages */}
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Common usages</h2>
         <p className="text-body-sm text-neutral-500 mb-6">Recommended tokens for frequent layout and component patterns.</p>
-        <div className="border border-neutral-200 rounded-xl overflow-hidden">
+        <Card padding="none" className="overflow-hidden">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-neutral-50 border-b border-neutral-200">
@@ -95,14 +97,14 @@ export function SpacingPage() {
               })}
             </tbody>
           </table>
-        </div>
+        </Card>
       </section>
 
       {/* Visual demo */}
       <section>
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Padding demo</h2>
         <p className="text-body-sm text-neutral-500 mb-6">How spacing tokens translate to visual breathing room around content.</p>
-        <div className="border border-neutral-200 rounded-xl p-8 flex flex-wrap gap-6 items-start">
+        <Card padding="lg" className="flex flex-wrap gap-6 items-start">
           {[{ t: '2', p: 8 }, { t: '4', p: 16 }, { t: '6', p: 24 }, { t: '8', p: 32 }, { t: '12', p: 48 }].map(({ t, p }) => (
             <div key={t} className="flex flex-col items-center gap-2">
               <div className="bg-brand-primary-subtle rounded border border-brand-primary-subtle flex items-center justify-center" style={{ padding: `${p}px` }}>
@@ -114,7 +116,7 @@ export function SpacingPage() {
               <span className="text-label text-neutral-400">{p}px</span>
             </div>
           ))}
-        </div>
+        </Card>
       </section>
     </div>
   )

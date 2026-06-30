@@ -49,6 +49,7 @@
   --base-neutral-700: 222 15% 30%;  /* #414858 */
   --base-neutral-800: 223 15% 18%;  /* #272b35 */
   --base-neutral-900: 222 16% 13%;  /* #1b1e25 */
+  --base-neutral-550: 221 15% 48%;  /* #68748d — accessible placeholder text, base-neutral-400 only reached 2.36:1 */
 
   /* Surface — light */
   --base-surface-light-0:         0   0% 100%;  /* #ffffff */
@@ -71,9 +72,16 @@
   --base-warning-light:   48  97%  89%;  /* #fef3c7 */
   --base-warning-dark:    23  83%  31%;  /* #92400e */
 
-  --base-danger-base:      0  84%  60%;  /* #ef4444 */
+  /* L lowered 60→46 so white text on a solid danger fill clears WCAG AA (4.5:1) —
+     the original #ef4444 only reached 3.78:1 against white. */
+  --base-danger-base:      0  84%  46%;  /* #d81313 */
   --base-danger-light:     0  93%  94%;  /* #fee2e2 */
   --base-danger-dark:      0  63%  31%;  /* #7f1d1d */
+
+  /* Accessibility-driven intermediate stops — not part of the public 50–900 scale,
+     used only where a base hue needs to pass contrast as a solid fill. */
+  --base-blue-750:       195 100% 30%;  /* #007399 — passes 4.5:1 with white text, base-blue-700 only reached 2.37:1 */
+  --base-success-solid:  142  71% 30%;  /* #16833e — passes 3:1 UI contrast vs a white ring, base-success-base only reached 2.30:1 */
 
   /* ─────────────────────────────────────────────────────
      TIER 2 — SEMANTIC aliases  (light mode defaults)
@@ -85,7 +93,7 @@
   --semantic-brand-primary-strong:        var(--base-indigo-700);
   --semantic-brand-primary-foreground:    var(--base-neutral-50);
 
-  --semantic-brand-secondary:             var(--base-blue-700);
+  --semantic-brand-secondary:             var(--base-blue-750);
   --semantic-brand-secondary-subtle:      var(--base-blue-600);
   --semantic-brand-secondary-strong:      var(--base-blue-800);
   --semantic-brand-secondary-foreground:  var(--base-neutral-50);
@@ -120,7 +128,7 @@
   --semantic-input-border-focused:   var(--base-blue-600);
   --semantic-input-border-error:     var(--base-danger-base);
   --semantic-input-border-disabled:  var(--base-neutral-200);
-  --semantic-input-text-placeholder: var(--base-neutral-400);
+  --semantic-input-text-placeholder: var(--base-neutral-550);
   --semantic-input-text-helper:      var(--base-neutral-500);
   --semantic-input-text-error:       var(--base-danger-base);
 
@@ -138,7 +146,7 @@
   --semantic-radio-border-default:   var(--base-neutral-300);
   --semantic-radio-bg-selected:      var(--base-indigo-600);
   --semantic-radio-border-selected:  var(--base-indigo-600);
-  --semantic-radio-dot-selected:     var(--base-neutral-900);
+  --semantic-radio-dot-selected:     var(--base-neutral-50);
   --semantic-radio-bg-disabled:      var(--base-neutral-100);
   --semantic-radio-border-disabled:  var(--base-neutral-200);
   --semantic-radio-dot-disabled:     var(--base-neutral-400);
@@ -151,7 +159,7 @@
   --semantic-toggle-thumb-disabled:  var(--base-neutral-400);
 
   /* Component — status */
-  --semantic-status-online:   var(--base-success-base);
+  --semantic-status-online:   var(--base-success-solid);
   --semantic-status-away:     var(--base-warning-base);
   --semantic-status-offline:  var(--base-neutral-400);
   --semantic-status-busy:     var(--base-danger-base);
@@ -192,7 +200,9 @@
   --destructive-foreground:  var(--base-surface-light-0);      /* #ffffff */
 
   --border:  var(--base-neutral-200);  /* #d6d9e1 */
-  --input:   var(--base-neutral-300);  /* #bec4cf */
+  /* neutral-500, not -300 — the lighter value only reached 1.75:1 against a white
+     surface, short of the 3:1 WCAG UI-component minimum for a default field border. */
+  --input:   var(--base-neutral-500);  /* #848da4 */
   --ring:    var(--base-indigo-500);   /* #544dcb — brand focus ring */
 
   --radius: 0.5rem;  /* corner_radius.8 = 8px */

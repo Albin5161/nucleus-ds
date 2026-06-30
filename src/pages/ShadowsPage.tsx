@@ -1,3 +1,5 @@
+import { Card } from '@/components/Card'
+
 const SHADOWS = [
   {
     name: 'sm',
@@ -60,7 +62,7 @@ export function ShadowsPage() {
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Drop shadows</h2>
         <p className="text-body-sm text-neutral-500 mb-8">Applied with <code className="bg-neutral-100 px-1 rounded text-label">shadow-*</code> utilities.</p>
-        <div className="border border-neutral-200 rounded-xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <Card padding="md" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {SHADOWS.map(({ name, cls, value, usage }) => (
             <div key={name} className="flex flex-col gap-3">
               <div className={`bg-surface-0 rounded-xl h-24 ${cls}`} />
@@ -73,14 +75,14 @@ export function ShadowsPage() {
               </div>
             </div>
           ))}
-        </div>
+        </Card>
       </section>
 
       {/* Inner shadow */}
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Inner shadow</h2>
         <p className="text-body-sm text-neutral-500 mb-8">Inset shadow for pressed or recessed elements.</p>
-        <div className="border border-neutral-200 rounded-xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <Card padding="md" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {INNER.map(({ name, cls, value, usage }) => (
             <div key={name} className="flex flex-col gap-3">
               <div className={`bg-surface-0 rounded-xl h-24 ${cls}`} />
@@ -93,14 +95,14 @@ export function ShadowsPage() {
               </div>
             </div>
           ))}
-        </div>
+        </Card>
       </section>
 
       {/* Elevation guide */}
       <section>
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Elevation guide</h2>
         <p className="text-body-sm text-neutral-500 mb-6">Match shadow level to component z-position in the interface.</p>
-        <div className="border border-neutral-200 rounded-xl overflow-hidden">
+        <Card padding="none" className="overflow-hidden">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-neutral-50 border-b border-neutral-200">
@@ -128,7 +130,7 @@ export function ShadowsPage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </Card>
       </section>
     </div>
   )

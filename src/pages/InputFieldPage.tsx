@@ -1,7 +1,17 @@
 import { useState } from 'react'
 import { RotateCcw, CheckCircle, XCircle, Mail, Search, Eye } from 'lucide-react'
 import { InputField } from '@/components/InputField'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
+import { TableOfContents } from '@/components/TableOfContents'
 import { cn } from '@/lib/utils'
+
+const TOC_ITEMS = [
+  { id: 'playground', label: 'Playground' },
+  { id: 'states', label: 'States' },
+  { id: 'usage-guidelines', label: 'Usage guidelines' },
+  { id: 'props', label: 'Props' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
   return (
@@ -45,9 +55,9 @@ function ControlRow({ label, children }: { label: string; children: React.ReactN
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <div>
+    <div id={id} className={id ? 'scroll-mt-28' : undefined}>
       <h2 className="text-label font-semibold uppercase tracking-widest text-neutral-400 mb-4">{title}</h2>
       {children}
     </div>
@@ -85,6 +95,7 @@ export function InputFieldPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10 flex flex-col gap-12">
+      <TableOfContents items={TOC_ITEMS} />
 
       {/* Header */}
       <div>
@@ -101,7 +112,7 @@ export function InputFieldPage() {
       </div>
 
       {/* Playground */}
-      <Section title="Playground">
+      <Section id="playground" title="Playground">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           <div className="bg-neutral-50 border-b border-neutral-200 px-10 py-12 flex items-center justify-center min-h-[160px]">
             <div className="w-full max-w-sm">
@@ -153,7 +164,7 @@ export function InputFieldPage() {
       </Section>
 
       {/* All states */}
-      <Section title="States">
+      <Section id="states" title="States">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6 grid grid-cols-2 gap-6">
           <InputField
             label="Default"
@@ -201,7 +212,7 @@ export function InputFieldPage() {
       </Section>
 
       {/* Usage guidelines */}
-      <Section title="Usage guidelines">
+      <Section id="usage-guidelines" title="Usage guidelines">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
             <div className="flex items-center gap-2 mb-4">
@@ -235,7 +246,7 @@ export function InputFieldPage() {
       </Section>
 
       {/* Props table */}
-      <Section title="Props">
+      <Section id="props" title="Props">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           <table className="w-full text-body-sm">
             <thead>
@@ -267,6 +278,24 @@ export function InputFieldPage() {
             </tbody>
           </table>
         </div>
+      </Section>
+
+      {/* Accessibility */}
+      <Section id="accessibility" title="Accessibility">
+        <AccessibilitySection
+          bare
+          role="Native <input> with a real <label htmlFor>, so it keeps standard form-field semantics without extra ARIA."
+          keyboard={['Tab moves focus into the field; standard text-editing keys apply once focused.']}
+          screenReader="Known gap: the error message renders as a plain <p>, not linked to the input via aria-describedby, and the input doesn't get aria-invalid when error is set — a screen reader user won't hear the error read out automatically when they focus the field. Wire up aria-describedby={errorId} and aria-invalid={!!error} before using error in production."
+          contrastChecks={
+            <>
+              <ContrastCheck label="Input text" fgClassName="text-foreground" bgClassName="bg-surface-0" level="text" />
+              <ContrastCheck label="Placeholder" fgClassName="text-input-text-placeholder" bgClassName="bg-surface-0" level="text" />
+              <ContrastCheck label="Error text" fgClassName="text-input-text-error" bgClassName="bg-surface-0" level="text" />
+              <ContrastCheck label="Default border vs bg" fgClassName="bg-input" bgClassName="bg-surface-0" level="ui" mode="fill" />
+            </>
+          }
+        />
       </Section>
 
     </div>

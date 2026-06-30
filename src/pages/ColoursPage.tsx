@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Card } from '@/components/Card'
 
 type Swatch = { label: string; cls: string }
 
@@ -52,7 +53,7 @@ export function ColoursPage() {
         </p>
       </div>
 
-      <div className="bg-surface-0 rounded-xl border border-neutral-200 p-8 space-y-2">
+      <Card padding="lg" className="space-y-2">
         <SwatchRow title="Brand Primary — Indigo" swatches={[
           { label: '50',  cls: 'bg-indigo-50' },
           { label: '100', cls: 'bg-indigo-100' },
@@ -122,7 +123,7 @@ export function ColoursPage() {
           { label: 'offline', cls: 'bg-status-offline' },
           { label: 'busy',    cls: 'bg-status-busy' },
         ]} />
-      </div>
+      </Card>
     </div>
   )
 }

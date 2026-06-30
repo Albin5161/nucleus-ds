@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
 import { TiltedCard } from '@/components/TiltedCard'
+import { Card } from '@/components/Card'
 
 function ColoursIllustration() {
   return (
@@ -109,19 +110,18 @@ export function FoundationsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {foundationList.map(f => (
           <TiltedCard key={f.name} rotateAmplitude={8} scaleOnHover={1.03}>
-            <Link
-              to={f.path}
-              className="group bg-neutral-100 rounded-2xl hover:bg-white transition-colors flex flex-col h-full"
-            >
-              <div className="h-44 shrink-0 flex items-center justify-center p-6 overflow-hidden rounded-t-2xl">
-                {f.illustration}
-              </div>
-              <div className="px-5 pb-5 flex-1">
-                <h2 className="text-h4 font-semibold text-neutral-900 mb-1">
-                  {f.name}
-                </h2>
-                <p className="text-body-sm text-neutral-500">{f.description}</p>
-              </div>
+            <Link to={f.path} className="block h-full">
+              <Card tone="interactive" radius="xl" border="none" padding="none" className="flex flex-col h-full">
+                <div className="h-44 shrink-0 flex items-center justify-center p-6 overflow-hidden rounded-t-2xl">
+                  {f.illustration}
+                </div>
+                <div className="px-5 pb-5 flex-1">
+                  <h2 className="text-h4 font-semibold text-neutral-900 mb-1">
+                    {f.name}
+                  </h2>
+                  <p className="text-body-sm text-neutral-500">{f.description}</p>
+                </div>
+              </Card>
             </Link>
           </TiltedCard>
         ))}

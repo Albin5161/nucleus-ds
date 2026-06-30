@@ -1,4 +1,5 @@
 import { EmptyStateCard } from '@/components/EmptyStateCard'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
 
 const TYPES = ['default', 'no-data', 'error'] as const
 
@@ -55,6 +56,26 @@ export function EmptyStateCardPage() {
             className="h-full"
           />
         </div>
+      </section>
+
+      {/* Accessibility */}
+      <section>
+        <h2 className="text-h4 font-medium text-neutral-900 mb-1">Accessibility</h2>
+        <p className="text-body-sm text-neutral-500 mb-6">
+          How this component behaves for keyboard and assistive technology users.
+        </p>
+        <AccessibilitySection
+          bare
+          role="The card itself has no role — it's a static content region, not a dialog or alert. The headline renders as a real <h3>, so it participates in the page's heading outline."
+          keyboard={['The two CTA buttons are real <button> elements (via the Button component) and follow standard Tab/Enter/Space behaviour — see the Button page for details.']}
+          screenReader={'The image placeholder is aria-hidden by default since it ships empty/decorative. If you pass a meaningful image via the image prop, drop the aria-hidden by using a real <img alt="..."> instead of a decorative div.'}
+          contrastChecks={
+            <>
+              <ContrastCheck label="Headline" fgClassName="text-foreground" bgClassName="bg-surface-0" level="text" />
+              <ContrastCheck label="Description" fgClassName="text-foreground" bgClassName="bg-surface-0" level="text" />
+            </>
+          }
+        />
       </section>
     </div>
   )

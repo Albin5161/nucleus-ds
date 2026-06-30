@@ -1,5 +1,15 @@
 import { useState } from 'react'
 import { Checkbox } from '@/components/Checkbox'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
+import { TableOfContents } from '@/components/TableOfContents'
+
+const TOC_ITEMS = [
+  { id: 'playground', label: 'Playground' },
+  { id: 'states', label: 'States' },
+  { id: 'usage-guidelines', label: 'Usage Guidelines' },
+  { id: 'props', label: 'Props' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 export function CheckboxPage() {
   // Playground state
@@ -19,6 +29,7 @@ export function CheckboxPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
+      <TableOfContents items={TOC_ITEMS} />
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
@@ -36,7 +47,7 @@ export function CheckboxPage() {
       </div>
 
       {/* Playground */}
-      <section className="mb-10">
+      <section id="playground" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Playground</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
           {/* Preview */}
@@ -120,7 +131,7 @@ export function CheckboxPage() {
       </section>
 
       {/* States */}
-      <section className="mb-10">
+      <section id="states" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">States</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
@@ -158,7 +169,7 @@ export function CheckboxPage() {
       </section>
 
       {/* Usage guidelines */}
-      <section className="mb-10">
+      <section id="usage-guidelines" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-neutral-200 rounded-xl p-6">
@@ -200,7 +211,7 @@ export function CheckboxPage() {
       </section>
 
       {/* Props table */}
-      <section>
+      <section id="props" className="scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Props</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
           <table className="w-full text-body-sm">
@@ -232,6 +243,23 @@ export function CheckboxPage() {
           </table>
         </div>
       </section>
+
+      {/* Accessibility */}
+      <AccessibilitySection
+        id="accessibility"
+        role={'Native <input type="checkbox"> — visually hidden but present in the DOM, so it keeps the browser\'s built-in semantics.'}
+        keyboard={[
+          'Tab moves focus to the checkbox.',
+          'Space toggles the checked state.',
+        ]}
+        screenReader="Announced via the associated <label>, with checked/unchecked/indeterminate state read automatically from the native input — no extra ARIA needed."
+        contrastChecks={
+          <>
+            <ContrastCheck label="Label text" fgClassName="text-foreground" bgClassName="bg-surface-0" level="text" />
+            <ContrastCheck label="Checked icon" fgClassName="text-checkbox-icon-checked" bgClassName="bg-checkbox-bg-checked" level="ui" />
+          </>
+        }
+      />
     </div>
   )
 }

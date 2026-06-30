@@ -1,10 +1,23 @@
 import { useState } from 'react'
 import { Avatar, type AvatarStatus, type AvatarSize } from '@/components/Avatar'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
+import { TableOfContents } from '@/components/TableOfContents'
 
 type AvatarType = 'icon' | 'initials' | 'image'
 
 const SIZES: AvatarSize[] = ['xs', 'sm', 'md', 'lg']
 const TYPES: AvatarType[] = ['icon', 'initials', 'image']
+
+const TOC_ITEMS = [
+  { id: 'playground', label: 'Playground' },
+  { id: 'types', label: 'Types' },
+  { id: 'sizes', label: 'Sizes' },
+  { id: 'status', label: 'Status' },
+  { id: 'avatar-group', label: 'Avatar Group' },
+  { id: 'usage-guidelines', label: 'Usage Guidelines' },
+  { id: 'props', label: 'Props' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 // Public domain placeholder image
 const SAMPLE_SRC = 'https://i.pravatar.cc/112'
@@ -17,6 +30,7 @@ export function AvatarPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
+      <TableOfContents items={TOC_ITEMS} />
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
@@ -34,7 +48,7 @@ export function AvatarPage() {
       </div>
 
       {/* Playground */}
-      <section className="mb-10">
+      <section id="playground" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Playground</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
           <div className="bg-neutral-50 flex items-center justify-center min-h-[120px] p-8">
@@ -99,7 +113,7 @@ export function AvatarPage() {
       </section>
 
       {/* Types */}
-      <section className="mb-10">
+      <section id="types" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Types</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
@@ -116,7 +130,7 @@ export function AvatarPage() {
       </section>
 
       {/* Sizes */}
-      <section className="mb-10">
+      <section id="sizes" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Sizes</h2>
         <div className="border border-neutral-200 rounded-xl p-6">
           <div className="flex items-end gap-6">
@@ -131,7 +145,7 @@ export function AvatarPage() {
       </section>
 
       {/* Status dots */}
-      <section className="mb-10">
+      <section id="status" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Status</h2>
         <div className="grid grid-cols-4 gap-4">
           {(['online','away','offline','busy'] as AvatarStatus[]).map(status => (
@@ -152,7 +166,7 @@ export function AvatarPage() {
       </section>
 
       {/* Avatar group pattern */}
-      <section className="mb-10">
+      <section id="avatar-group" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Avatar Group</h2>
         <div className="border border-neutral-200 rounded-xl p-6">
           <p className="text-body-sm text-neutral-500 mb-4">Stacked avatars with overlap — common for team / participants display.</p>
@@ -183,7 +197,7 @@ export function AvatarPage() {
       </section>
 
       {/* Usage Guidelines */}
-      <section className="mb-10">
+      <section id="usage-guidelines" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-neutral-200 rounded-xl p-6">
@@ -225,7 +239,7 @@ export function AvatarPage() {
       </section>
 
       {/* Props table */}
-      <section>
+      <section id="props" className="scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Props</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
           <table className="w-full text-body-sm">
@@ -256,6 +270,21 @@ export function AvatarPage() {
           </table>
         </div>
       </section>
+
+      {/* Accessibility */}
+      <AccessibilitySection
+        id="accessibility"
+        role={'The status dot uses role="img" with aria-label set to the status word (e.g. "online") so it\'s announced on its own. The avatar circle itself has no role — it\'s decorative chrome around the image/initials/icon.'}
+        keyboard={['Avatar is not interactive and is not part of the tab order. If used as a button trigger (e.g. a profile menu), wrap it in a real <button> rather than adding click handlers directly to the Avatar.']}
+        screenReader={'type="image" defaults alt to an empty string — fine when a name or label sits next to the avatar, but pass real alt text (e.g. the person\'s name) when the avatar is the only identifying element on screen.'}
+        contrastChecks={
+          <>
+            <ContrastCheck label="Initials" fgClassName="text-foreground" bgClassName="bg-muted" level="text" />
+            <ContrastCheck label="Fallback icon" fgClassName="text-neutral-500" bgClassName="bg-muted" level="ui" />
+            <ContrastCheck label="Status dot (online) vs ring" fgClassName="bg-status-online" bgClassName="bg-white" level="ui" mode="fill" />
+          </>
+        }
+      />
     </div>
   )
 }

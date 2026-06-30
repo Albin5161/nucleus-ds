@@ -1,5 +1,16 @@
 import { useState } from 'react'
 import { Toggle } from '@/components/Toggle'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
+import { TableOfContents } from '@/components/TableOfContents'
+
+const TOC_ITEMS = [
+  { id: 'playground', label: 'Playground' },
+  { id: 'states', label: 'States' },
+  { id: 'settings-pattern', label: 'Settings Pattern' },
+  { id: 'usage-guidelines', label: 'Usage Guidelines' },
+  { id: 'props', label: 'Props' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 export function TogglePage() {
   const [pgChecked, setPgChecked] = useState(false)
@@ -19,6 +30,7 @@ export function TogglePage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10">
+      <TableOfContents items={TOC_ITEMS} />
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
@@ -36,7 +48,7 @@ export function TogglePage() {
       </div>
 
       {/* Playground */}
-      <section className="mb-10">
+      <section id="playground" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Playground</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
           <div className="bg-neutral-50 flex items-center justify-center min-h-[120px] p-8">
@@ -96,7 +108,7 @@ export function TogglePage() {
       </section>
 
       {/* States */}
-      <section className="mb-10">
+      <section id="states" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">States</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
@@ -114,7 +126,7 @@ export function TogglePage() {
       </section>
 
       {/* Settings pattern example */}
-      <section className="mb-10">
+      <section id="settings-pattern" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Settings Pattern</h2>
         <div className="border border-neutral-200 rounded-xl divide-y divide-neutral-100">
           {[
@@ -134,7 +146,7 @@ export function TogglePage() {
       </section>
 
       {/* Usage Guidelines */}
-      <section className="mb-10">
+      <section id="usage-guidelines" className="mb-10 scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Usage Guidelines</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-neutral-200 rounded-xl p-6">
@@ -176,7 +188,7 @@ export function TogglePage() {
       </section>
 
       {/* Props table */}
-      <section>
+      <section id="props" className="scroll-mt-28">
         <h2 className="text-label font-semibold text-neutral-400 uppercase tracking-widest mb-4">Props</h2>
         <div className="border border-neutral-200 rounded-xl overflow-hidden">
           <table className="w-full text-body-sm">
@@ -206,6 +218,23 @@ export function TogglePage() {
           </table>
         </div>
       </section>
+
+      {/* Accessibility */}
+      <AccessibilitySection
+        id="accessibility"
+        role={'Native <input type="checkbox" role="switch"> — the role override tells assistive tech to announce on/off semantics instead of checked/unchecked.'}
+        keyboard={[
+          'Tab moves focus to the toggle.',
+          'Space flips the on/off state.',
+        ]}
+        screenReader={'Announced via the associated <label> as a switch, with "on"/"off" state read automatically from the native input — no extra ARIA needed.'}
+        contrastChecks={
+          <>
+            <ContrastCheck label="Track (on) vs page" fgClassName="bg-toggle-track-on" bgClassName="bg-surface-0" level="ui" mode="fill" />
+            <ContrastCheck label="Thumb vs track (on)" fgClassName="bg-toggle-thumb" bgClassName="bg-toggle-track-on" level="ui" mode="fill" />
+          </>
+        }
+      />
     </div>
   )
 }

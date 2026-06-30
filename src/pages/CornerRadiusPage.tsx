@@ -1,3 +1,5 @@
+import { Card } from '@/components/Card'
+
 const RADIUS_SCALE = [
   { name: 'none', token: 'rounded-none', value: '0px',   var: '—'              },
   { name: 'xs',   token: 'rounded-xs',   value: '1px',   var: '--radius-xs'    },
@@ -35,7 +37,7 @@ export function CornerRadiusPage() {
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Scale</h2>
         <p className="text-body-sm text-neutral-500 mb-6">Each step applied to a 64×64px square.</p>
-        <div className="border border-neutral-200 rounded-xl p-8 flex flex-wrap gap-8 items-end">
+        <Card padding="lg" className="flex flex-wrap gap-8 items-end">
           {RADIUS_SCALE.map(({ name, token, value }) => (
             <div key={name} className="flex flex-col items-center gap-3">
               <div
@@ -47,14 +49,14 @@ export function CornerRadiusPage() {
               </div>
             </div>
           ))}
-        </div>
+        </Card>
       </section>
 
       {/* Token table */}
       <section className="mb-12">
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">Tokens</h2>
         <p className="text-body-sm text-neutral-500 mb-6">All radii map to CSS variables prefixed <code className="bg-neutral-100 px-1 rounded text-label">--radius-*</code>.</p>
-        <div className="border border-neutral-200 rounded-xl overflow-hidden">
+        <Card padding="none" className="overflow-hidden">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-neutral-50 border-b border-neutral-200">
@@ -81,14 +83,14 @@ export function CornerRadiusPage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </Card>
       </section>
 
       {/* Applied to components */}
       <section>
         <h2 className="text-h4 font-medium text-neutral-900 mb-1">In context</h2>
         <p className="text-body-sm text-neutral-500 mb-6">How radius steps look on real component shapes.</p>
-        <div className="border border-neutral-200 rounded-xl p-8 flex flex-wrap gap-4 items-center">
+        <Card padding="lg" className="flex flex-wrap gap-4 items-center">
           {[
             { label: 'Tag',    cls: 'rounded      px-3 py-1   text-label',   bg: 'bg-brand-primary-subtle text-brand-primary-strong' },
             { label: 'Button', cls: 'rounded-lg   px-6 py-3   text-body',    bg: 'bg-brand-primary text-brand-primary-foreground' },
@@ -97,7 +99,7 @@ export function CornerRadiusPage() {
           ].map(({ label, cls, bg }) => (
             <div key={label} className={`${cls} ${bg}`}>{label}</div>
           ))}
-        </div>
+        </Card>
       </section>
     </div>
   )

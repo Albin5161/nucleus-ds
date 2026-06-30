@@ -1,10 +1,20 @@
 import { useState } from 'react'
 import { RotateCcw, CheckCircle, XCircle } from 'lucide-react'
 import { Alert } from '@/components/Alert'
+import { AccessibilitySection, ContrastCheck } from '@/components/A11y'
+import { TableOfContents } from '@/components/TableOfContents'
 import { cn } from '@/lib/utils'
 
 type Variant = 'danger' | 'success' | 'warning' | 'default'
 const VARIANTS: Variant[] = ['default', 'success', 'warning', 'danger']
+
+const TOC_ITEMS = [
+  { id: 'playground', label: 'Playground' },
+  { id: 'variants', label: 'Variants' },
+  { id: 'usage-guidelines', label: 'Usage guidelines' },
+  { id: 'props', label: 'Props' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 /* ── Playground control primitives ── */
 
@@ -84,9 +94,9 @@ function ControlRow({ label, children }: { label: string; children: React.ReactN
 }
 
 /* ── Section heading ── */
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <div>
+    <div id={id} className={id ? 'scroll-mt-28' : undefined}>
       <h2 className="text-label font-semibold uppercase tracking-widest text-neutral-400 mb-4">{title}</h2>
       {children}
     </div>
@@ -128,6 +138,7 @@ export function AlertPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10 flex flex-col gap-12">
+      <TableOfContents items={TOC_ITEMS} />
 
       {/* Header */}
       <div>
@@ -144,7 +155,7 @@ export function AlertPage() {
       </div>
 
       {/* Playground */}
-      <Section title="Playground">
+      <Section id="playground" title="Playground">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           {/* Live preview */}
           <div className="bg-neutral-50 border-b border-neutral-200 px-10 py-12 flex items-center justify-center min-h-[160px]">
@@ -204,7 +215,7 @@ export function AlertPage() {
       </Section>
 
       {/* All variants static */}
-      <Section title="Variants">
+      <Section id="variants" title="Variants">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6 flex flex-col gap-3">
           {VARIANTS.map(v => (
             <Alert
@@ -220,7 +231,7 @@ export function AlertPage() {
       </Section>
 
       {/* Usage guidelines */}
-      <Section title="Usage guidelines">
+      <Section id="usage-guidelines" title="Usage guidelines">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* When to use */}
           <div className="bg-surface-0 rounded-xl border border-neutral-200 p-6">
@@ -257,7 +268,7 @@ export function AlertPage() {
       </Section>
 
       {/* Props table */}
-      <Section title="Props">
+      <Section id="props" title="Props">
         <div className="bg-surface-0 rounded-xl border border-neutral-200 overflow-hidden">
           <table className="w-full text-body-sm">
             <thead>
@@ -288,6 +299,27 @@ export function AlertPage() {
             </tbody>
           </table>
         </div>
+      </Section>
+
+      {/* Accessibility */}
+      <Section id="accessibility" title="Accessibility">
+        <AccessibilitySection
+          bare
+          role={'role="alert" — implicitly an assertive live region, so screen readers interrupt and announce the alert\'s content as soon as it\'s added to the DOM.'}
+          keyboard={[
+            'The dismiss (×) button is a real <button> with aria-label="Dismiss", reachable via Tab and activated with Enter/Space.',
+            'The optional action link is a real <a>, reachable via Tab.',
+          ]}
+          screenReader={'Because role="alert" interrupts, reserve it for important, time-sensitive messages — mounting several at once (e.g. a toast stack) will cause overlapping announcements. For passive, non-urgent banners consider role="status" instead.'}
+          contrastChecks={
+            <>
+              <ContrastCheck label="Default" fgClassName="text-foreground" bgClassName="bg-neutral-50" level="text" />
+              <ContrastCheck label="Success" fgClassName="text-success-strong" bgClassName="bg-success-subtle" level="text" />
+              <ContrastCheck label="Warning" fgClassName="text-warning-strong" bgClassName="bg-warning-subtle" level="text" />
+              <ContrastCheck label="Danger" fgClassName="text-danger-strong" bgClassName="bg-danger-subtle" level="text" />
+            </>
+          }
+        />
       </Section>
 
     </div>

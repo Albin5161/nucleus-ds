@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { TiltedCard } from '@/components/TiltedCard'
+import { Card } from '@/components/Card'
 
 function FoundationsIllustration() {
   return (
@@ -85,36 +86,34 @@ export function HomePage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
-          <Link
-            to="/foundations"
-            className="group bg-neutral-100 rounded-2xl hover:bg-white transition-colors flex flex-col h-full"
-          >
-            <div className="h-56 shrink-0 relative overflow-hidden rounded-t-2xl">
-              <FoundationsIllustration />
-            </div>
-            <div className="px-6 pb-6 flex-1">
-              <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Foundations</h2>
-              <p className="text-body-sm text-neutral-500">
-                Colour tokens, typography scale, spacing, corner radius, and elevation — the visual language every component is built on.
-              </p>
-            </div>
+          <Link to="/foundations" className="block h-full">
+            <Card tone="interactive" radius="xl" border="none" padding="none" className="flex flex-col h-full">
+              <div className="h-56 shrink-0 relative overflow-hidden rounded-t-2xl">
+                <FoundationsIllustration />
+              </div>
+              <div className="px-6 pb-6 flex-1">
+                <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Foundations</h2>
+                <p className="text-body-sm text-neutral-500">
+                  Colour tokens, typography scale, spacing, corner radius, and elevation — the visual language every component is built on.
+                </p>
+              </div>
+            </Card>
           </Link>
         </TiltedCard>
 
         <TiltedCard rotateAmplitude={8} scaleOnHover={1.02}>
-          <Link
-            to="/components"
-            className="group bg-neutral-100 rounded-2xl hover:bg-white transition-colors flex flex-col h-full"
-          >
-            <div className="h-56 shrink-0 relative overflow-hidden rounded-t-2xl">
-              <ComponentsIllustration />
-            </div>
-            <div className="px-6 pb-6 flex-1">
-              <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Components</h2>
-              <p className="text-body-sm text-neutral-500">
-                10 production-ready React components built from Figma designs, token-audited, and accessible out of the box.
-              </p>
-            </div>
+          <Link to="/components" className="block h-full">
+            <Card tone="interactive" radius="xl" border="none" padding="none" className="flex flex-col h-full">
+              <div className="h-56 shrink-0 relative overflow-hidden rounded-t-2xl">
+                <ComponentsIllustration />
+              </div>
+              <div className="px-6 pb-6 flex-1">
+                <h2 className="text-h3 font-semibold text-neutral-900 mb-1.5">Components</h2>
+                <p className="text-body-sm text-neutral-500">
+                  10 production-ready React components built from Figma designs, token-audited, and accessible out of the box.
+                </p>
+              </div>
+            </Card>
           </Link>
         </TiltedCard>
       </div>
